@@ -79,19 +79,17 @@ exports.sellCards = function(req, res) {
 		  	console.log(err)
 		  }
 		  if(results != ""){
-		  	var cardstypes = results;
+		  	var cardstypes = results[0];
 			client.query("select bid_price,card_id,face_value,img_url from tbl_card_price", function(err, results, fields) {
 			  if(err){
 			  	console.log(err)
 			  }
 			  if(results != ""){
 			  	var cardsprice = results;
-	  			// console.log(cards);
-	  			// console.log(cardstypes)
-			  	// console.log(cardsprice)
-			  	cardstypes[0].cardsprice = cardsprice[0];
-			  	cards[0].cardstypes = cardstypes[0];
-	  			console.log(cards[0].cardstypes);
+			  	cardstypes.cardsprice = cardsprice[0];
+			  	cards[0].cardstypes = cardstypes;
+			  	console.log(cardstypes.cardsprice)
+	  			console.log(cards);
 			  	res.render('admin/sellCards',{
 					title: '我要卖卡',
 					cards: cards
@@ -105,7 +103,40 @@ exports.sellCards = function(req, res) {
 	// client.end();
 }
 exports.cards = function(req, res) {
-
+	var cards = req.body；
+	if(cards){
+		var cardstype = cards.cardstype;
+		client.query("select card_name,card_desc,id,logo_url,card_type from tbl_card_info where card_type='"+cardstype+"'", function(err, results, fields) {
+		  if(err){
+		  	res.json(config.resjson(400, "未知错误",{}))
+		  	console.log(err)
+		  }
+		  if(results != ""){
+		  	res.json(config.resjson(200, "获取成功",results))
+		  	console.log(results)
+		  }
+		});
+	}else{
+		res.json(config.resjson(400, "缺少参数",{}))
+	}
+}
+exports.id = function(req, res) {
+	var cards = req.body；
+	if(cards){
+		var cardsid = cards.cardsid;
+		client.query("select card_name,card_desc,id,logo_url,card_type from tbl_card_price where card_id='"+cardsid+"'", function(err, results, fields) {
+		  if(err){
+		  	res.json(config.resjson(400, "未知错误",{}))
+		  	console.log(err)
+		  }
+		  if(results != ""){
+		  	res.json(config.resjson(200, "获取成功",results))
+		  	console.log(results)
+		  }
+		});
+	}else{
+		res.json(config.resjson(400, "缺少参数",{}))
+	}
 }
 exports.setEmail = function(req, res) {
 	res.render('admin/setEmail',{
