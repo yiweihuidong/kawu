@@ -138,10 +138,7 @@ exports.id = function(req, res) {
 		  	res.json(common.resjson(400, "未知错误",{}))
 		  	console.log(err)
 		  }
-		  if(results != ""){
-		  	res.json(common.resjson(200, "获取成功",results))
-		  }
-		  if(fields){
+		  if(results){
 		  	res.json(common.resjson(200, "获取成功",results))
 		  }
 		});
@@ -157,17 +154,17 @@ exports.sellCardsPost = function(req, res){
 		client.query("use " + TEST_DATABASE);
 		client.query('INSERT INTO tbl_order_detail (bid_price,card_id,card_name,card_no,card_password,face_value,id,order_code) VALUES ("'+sellmsg.bid_price+','+sellmsg.card_id+','+sellmsg.card_name+','+sellmsg.card_no+','+sellmsg.card_password+','+sellmsg.face_value+','+sellmsg.id+','+sellmsg.order_code+'")',function selectCb(err, results, fields){  
 		    if (err) {
-		    	res.json(config.resjson(400, "未知错误",{}))
+		    	res.json(common.resjson(400, "未知错误",{}))
 				console.log(err)
 		    }
 		    if(results){
-				res.json(config.resjson(200, "获取成功",results))
+				res.json(common.resjson(200, "获取成功",results))
 		  		console.log(results)
 		    }   
 		    client.end();  
 	    });
 	}else{
-		res.json(config.resjson(400, "缺少参数",{}))
+		res.json(common.resjson(400, "缺少参数",{}))
 	}
 }
 exports.setEmail = function(req, res) {
@@ -180,9 +177,92 @@ exports.setPassword = function(req, res) {
 		title: '设置密码'
 	});
 }
+exports.changepassword = function(req, res){
+	var password = req.body;
+	var _user = req.session.user;
+	var client = mysql.createConnection(mysqlmsg);
+	client.connect();
+	client.query("use " + TEST_DATABASE);
+	client.query("select * from tbl_member_info where member_code='"+_user.member_code+"'", function(err, results, fields) {
+	  if(err){
+	  	console.log(err)
+	  }
+	  if(results){
+		var md5 = crypto.createHash('md5');
+	  	var oldpassword = password.oldpassword;
+		md5.update(oldpassword);
+		var yanpassword = md5.digest('hex');
+	  	if(yanpassword == results[0].login_password){
+	  		//update password
+	  		var md5 = crypto.createHash('md5');
+	  		var newpassword = password.newpassword;
+			md5.update(newpassword);
+			var updatepassword = md5.digest('hex');
+	  		client.query("update tbl_member_info set login_password = '"+updatepassword+"' where member_code='"+_user.member_code+"'", function(err, results, fields) {
+			  if(err){
+			  	res.json(common.resjson(400, "修改失败",{}))
+			  	console.log(err)
+			  }
+			  if(results){
+			  	console.log(yanpassword)
+				console.log(updatepassword)
+			  	res.json(common.resjson(200, "修改成功",{}))
+			  }
+			  if(fields){
+			  	res.json(common.resjson(400, "修改失败",{}))
+			  }
+			});
+		}else{
+			res.json(common.resjson(400, "原始密码错误",{}))
+	  	}
+	  }
+	});
+}
+//change password
 exports.setOrderPassword = function(req, res) {
 	res.render('admin/setOrderPassword',{
 		title: '设置支付密码'
+	});
+}
+exports.changepaypassword = function(req, res){
+	var password = req.body;
+	var _user = req.session.user;
+	var client = mysql.createConnection(mysqlmsg);
+	client.connect();
+	client.query("use " + TEST_DATABASE);
+	client.query("select * from tbl_member_info where member_code='"+_user.member_code+"'", function(err, results, fields) {
+	  if(err){
+	  	console.log(err)
+	  }
+	  if(results){
+		var md5 = crypto.createHash('md5');
+	  	var oldpassword = password.oldpassword;
+		md5.update(oldpassword);
+		var yanpassword = md5.digest('hex');
+	  	if(yanpassword == results[0].pay_password){
+	  		//update password
+	  		var md5 = crypto.createHash('md5');
+	  		var newpassword = password.newpassword;
+			md5.update(newpassword);
+			var updatepassword = md5.digest('hex');
+	  		client.query("update tbl_member_info set pay_password = '"+updatepassword+"' where member_code='"+_user.member_code+"'", function(err, results, fields) {
+			  if(err){
+			  	res.json(common.resjson(400, "修改失败",{}))
+			  	console.log(err)
+			  }
+			  if(results){
+			  	console.log(yanpassword)
+				console.log(updatepassword)
+			  	res.json(common.resjson(200, "修改成功",{}))
+			  }
+			  if(fields){
+			  	res.json(common.resjson(400, "修改失败",{}))
+			  }
+			});
+		}else{
+			res.json(common.resjson(400, "原始密码错误",{}))
+	  	}
+	  }
 	});
 }
 exports.setPhone = function(req, res) {

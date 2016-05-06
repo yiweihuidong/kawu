@@ -42,6 +42,9 @@ module.exports = function(app) {
 	app.post('/cardstype',User.cards)
 	app.post('/cardsid',User.id)
 	app.post('/sellCardsPost',User.sellCardsPost)
+	//change
+	app.post('/changepassword',User.changepassword)
+	app.post('/changepaypassword',User.changepaypassword)
 
 
 	//login
