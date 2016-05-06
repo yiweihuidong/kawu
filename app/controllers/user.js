@@ -117,7 +117,9 @@ exports.cards = function(req, res) {
 		  }
 		  if(results != ""){
 		  	res.json(common.resjson(200, "获取成功",results))
-		  	console.log(results)
+		  }
+		  if(fields){
+		  	res.json(common.resjson(200, "获取成功",results))
 		  }
 		});
 	}else{
@@ -131,14 +133,16 @@ exports.id = function(req, res) {
 		var client = mysql.createConnection(mysqlmsg);
 		client.connect();
 		client.query("use " + TEST_DATABASE);
-		client.query("select card_name,card_desc,id,logo_url,card_type from tbl_card_price where card_id='"+cardsid+"'", function(err, results, fields) {
+		client.query("select bid_price,card_id,id,img_url from tbl_card_price where card_id='"+cardsid+"'", function(err, results, fields) {
 		  if(err){
 		  	res.json(common.resjson(400, "未知错误",{}))
 		  	console.log(err)
 		  }
 		  if(results != ""){
 		  	res.json(common.resjson(200, "获取成功",results))
-		  	console.log(results)
+		  }
+		  if(fields){
+		  	res.json(common.resjson(200, "获取成功",results))
 		  }
 		});
 	}else{
