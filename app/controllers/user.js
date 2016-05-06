@@ -118,9 +118,6 @@ exports.cards = function(req, res) {
 		  if(results != ""){
 		  	res.json(common.resjson(200, "获取成功",results))
 		  }
-		  if(fields){
-		  	res.json(common.resjson(200, "获取成功",results))
-		  }
 		});
 	}else{
 		res.json(common.resjson(400, "缺少参数",{}))
