@@ -1,0 +1,216 @@
+
+
+table.jCalendar {
+	color: #333;
+	border-collapse:separate;
+	width: 100%;
+}
+table.jCalendar th {
+	color: #666;
+	border: 0 none;
+	padding: 0.7em 0.3em;
+	text-align: center;
+	text-transform:uppercase;
+}
+
+table.jCalendar td{
+	text-align: center;
+	padding: 3px 5px;
+	color: #333;
+	border: 1px solid #fff;
+	background-color: #fff;
+	border-radius: 2px;
+}
+table.jCalendar td.other-month{
+	color: #aaa;
+	border-color: #fff;
+	background: #fff;
+}
+table.jCalendar td.today{
+	color: #f60;
+	font-weight: 700;
+	border: 1px solid #e7b797;
+	background: #fbd5bc;
+}
+table.jCalendar td.selected,
+table.jCalendar td.selected.dp-hover{
+	color: #fff;
+	border-color: #333;
+	background: #333;
+}
+table.jCalendar td.dp-hover,
+table.jCalendar tr.activeWeekHover td{
+	color: #222;
+	border-color:#999;
+	background: #e4e4e4;
+}
+table.jCalendar tr.selectedWeek td {
+	background: #333;
+	border-color: #333;
+	color: #fff;
+}
+table.jCalendar td.disabled, 
+table.jCalendar td.disabled.dp-hover {
+	border-color:#fff;
+	background: #fff;
+	color: #888;
+}
+table.jCalendar td.unselectable,
+table.jCalendar td.unselectable:hover,
+table.jCalendar td.unselectable.dp-hover {
+	background: #bbb;
+	color: #888;
+}
+
+/* For the popup */
+
+/* NOTE - you will probably want to style a.dp-choose-date - see how I did it in demo.css */
+/* .dp-popup */
+.dp-popup:before{
+	content: '';
+	display: inline-block;
+	border-left: 7px solid transparent;
+	border-right: 7px solid transparent;
+	border-bottom: 7px solid rgba(0,0,0, 0.4);
+	position: absolute;
+	top: -7px;
+	left: 6px;
+}
+.dp-popup:after {
+	content: '';
+	display: inline-block;
+	border-left: 6px solid transparent;
+	border-right: 6px solid transparent;
+	border-bottom: 6px solid #fff;
+	position: absolute;
+	top: -6px;
+	left: 7px;
+}
+
+div.dp-popup{
+	width: 224px;
+	position: relative;
+	font-size: 12px;
+	padding: 4px;
+	border: 1px solid #adadad;
+	background-color: #fff;
+	border-radius: 3px;
+	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+div#dp-popup{
+	position: absolute;
+	z-index: 9999;
+	margin-top: 34px;
+}
+div.dp-popup h2{
+	width: 222px;
+	height: 28px;
+	line-height: 28px;
+	overflow: hidden;
+	text-align: center;
+	font-weight: bold;
+	color: #333;
+	text-shadow:0 1px 0 #fff;
+	background: #fff;
+	border-bottom: 1px solid #eee;
+}
+a#dp-close{
+	font-size: 11px;
+	padding: 4px 0;
+	text-align: center;
+	display: block;
+}
+a#dp-close:hover {
+	text-decoration: underline;
+}
+div.dp-popup a {
+	color: #000;
+	text-decoration: none;
+	padding: 3px 2px 0;
+}
+div.dp-popup div.dp-nav-prev,
+div.dp-popup div.dp-nav-next{
+	position: absolute;
+	top: 6px;
+	left: 6px;
+	width: 100px;
+}
+div.dp-popup div.dp-nav-prev a,
+div.dp-popup div.dp-nav-next a{
+	display: block;
+	float: left;
+	width: 22px;
+	height: 22px;
+	line-height: 18px;
+	padding: 0;
+	margin: 0 2px 0 0;
+	text-align: center;
+	cursor: pointer;
+	overflow: hidden;
+	text-indent: -999px;
+	border: 1px solid #fff;
+	background-image: url(../images/ui-date-arrow.gif);
+	background-repeat: no-repeat;
+	background-color: #fff;
+}
+div.dp-popup div.dp-nav-prev a:hover,
+div.dp-popup div.dp-nav-next a:hover{
+	border-color: #c0c0c0;
+	background-color: #e4e4e4;
+}
+/* Opera needs the rules to be this specific otherwise it doesn't change the cursor back to pointer after you have disabled and re-enabled a link */
+div.dp-popup div.dp-nav-prev a.dp-nav-prev-year{
+	background-position: 7px 7px;	
+}
+div.dp-popup div.dp-nav-prev a.dp-nav-prev-month{
+	background-position: 7px -27px;	
+}
+div.dp-popup div.dp-nav-next a.dp-nav-next-year{
+	background-position: -27px 7px;	
+}
+div.dp-popup div.dp-nav-next a.dp-nav-next-month{
+	background-position: -25px -27px;	
+}
+div.dp-popup div.dp-nav-prev a.disabled, 
+div.dp-popup div.dp-nav-next a.disabled {
+	cursor: default;
+}
+div.dp-popup div.dp-nav-next{
+	left: auto;
+	top: 6px;
+	right: 6px;
+}
+div.dp-popup div.dp-nav-next a{
+	float: right;
+	margin: 0 0 0 2px;
+}
+div.dp-popup a.disabled{
+	cursor: default;
+	color: #aaa;
+}
+div.dp-popup td{
+	cursor: pointer;
+}
+div.dp-popup td.disabled {
+	cursor: default;
+}
+
+.dp-choose-date{
+	display: inline-block;
+	width: 16px;
+	height: 14px;
+	padding: 0;
+	margin: 9px 0 0 -35px;
+	position: absolute;
+	z-index: 3;
+	font-size: 0;
+	line-height: 0;
+	text-indent: -2000px;
+	_text-indent: 0;
+	overflow: hidden;
+	background: url(../images/calendar.gif) 0 0 no-repeat;
+}
+a.dp-choose-date.dp-disabled{			
+	cursor: default;
+	background: transparent;
+}	

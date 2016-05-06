@@ -1,0 +1,74 @@
+<%- include ../layout.html %>
+<link rel="stylesheet" type="text/css" href="/css/validform.css">
+<script type="text/javascript" src="/js/Validform_v5.3.2_min.js"></script>
+	<div class="content">
+		<div class="signin-panel">
+			<div class="container">
+				<div class="box signform signupform">
+					<h2 class="h4 clearfix">
+						<small class="pull-right">
+							<a href="signin.html">已经有账号，从这登录</a>
+						</small>
+						注册
+					</h2>
+					<form action="/signup" method="post" id="userbutton" class="signupform">
+						<div class="form-group">
+							<label class="control-label" for="username">用户帐号</label>
+							<input type="text" class="form-control" id="username" name="username" datatype="e|m" sucmsg="用户名验证通过！" nullmsg="请输入用户名！" errormsg="请用邮箱或手机号码注册！"  />
+						</div>
+						<div class="form-group">
+							<label class="control-label" for="newpsw">登录密码</label>
+							<input type="password" class="form-control" id="newpsw" name="userpassword" datatype="*6-15" errormsg="密码范围在6~15位之间！" />
+						</div>
+						<div class="form-group">
+							<label class="control-label" for="verifypsw">确认密码</label>
+							<input type="password" class="form-control" id="verifypsw" name="repassword" null="请输入密码"name="userpassword2" datatype="*" recheck="userpassword" errormsg="您两次输入的账号密码不一致！" /></div>
+						<div class="form-group">
+							<label class="control-label" for="verifycode">验证码</label>
+							<input type="text" class="form-control" id="verifycode" name="verifycode" maxlength="6" null="">
+							<img src="/imgcode" class="verifyimg code" tip="点击图片刷新验证码" onclick="this.src='/imgcode?time='+Math.random()"></div>
+						<div class="form-group">
+							<label class="checkbox pull-left" tip="阅读和同意51卡务网注册协议后才能注册！">
+								<input type="checkbox" id="agreement" checked="checked">
+								已阅读并同意
+								<a target="_blank" href="help-agreement.html">注册协议</a>
+							</label>
+							<!-- <label class="checkbox pull-right">
+								<input type="checkbox" id="user-referee">使用推广号</label> -->
+						</div>
+						<div class="form-group">
+							<input class="btn btn-primary btn-block" type="submit" id="signup-submit" value="立即注册">
+							<!-- <input type="hidden" name="refer" value="signin.html?url=%2Faccount.html"> -->
+							<!-- <input type="hidden" name="formhash" value="3f959c23"> -->
+						</div>
+						<!-- <div class="form-group">
+							<a class="btn btn-qq btn-block btn-connect" href="signup.html">
+							 onclick="toQzoneLogin()"
+								<i class="iconfont fsz20"></i>
+								使用QQ账号快速注册
+							</a>
+						</div> -->
+					</form>
+				</div>
+				<div class="signbanner signupbanner">
+					<img src="/img/sign.png">
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		$(function (){
+			$('#username').change(function() {
+				var data = {
+					username : $("#username").val()
+				} 
+				sajax('/checkUsername','POST',data,function (data){
+					if(data.code == 400){
+						alert(data.msg)
+					}
+				})
+			});
+			$(".signupform").Validform();
+		})
+	</script>
+<%- include ../includes/footer.html %>

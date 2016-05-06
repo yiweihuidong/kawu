@@ -1,0 +1,121 @@
+<div class="tip" id="eytip" style="display: none; left: 924.5px; top: 2006px;"> <i id="tip-arrow" class="tip-arrow tip-arrow-top"></i>
+	<div class="tip-cont" id="tip-cont">中粮我买网礼品卡回收</div>
+</div>
+<div class="header">
+	<div class="navbar navbar-blue">
+		<div class="container">
+			<h1 class="navbar-brand">
+				<a href="/">
+					<img class="png" src="/img/kawu_logo.jpg"></a>
+			</h1>
+			<ul class="navbar-nav">
+				<li class="navbar-item currents">
+					<a class="navbar-link" href="/index.html">首页</a>
+				</li>
+				<!-- <li class="navbar-item ">
+					<a class="navbar-link" data-hover="dropdown" href="recovery.html">
+						<span>礼品卡回收</span>
+						<span class="caret"></span>
+					</a>
+					<div class="dropdown-menu dropdown-menu-navbar"> <i class="dropdown-arrow dropdown-arrow1"></i>
+						<i class="dropdown-arrow dropdown-arrow2"></i>
+						<ul class="dropdown-menu-list fn-clear">
+							<li>
+								<a class="" href="b2c.html">电商卡回收</a>
+							</li>
+							<li>
+								<a class="" href="trip.html">旅游卡回收</a>
+							</li>
+							<li>
+								<a class="" href="mart.html">商超卡回收</a>
+							</li>
+							<li>
+								<a class="" href="oils.html">加油卡回收</a>
+							</li>
+						</ul>
+					</div>
+				</li> -->
+				<li class="navbar-item ">
+					<a class="navbar-link" href="recovery.html">礼品卡回收</a>
+				</li>
+				<!-- <li class="navbar-item ">
+					<a class="navbar-link" href="recovery.html">话费卡回收</a>
+				</li> -->
+			</ul>
+			<ul class="navbar-links">
+				<li class="navbar-item pr10 ">
+					<% if(typeof(user) == 'undefined'){ %>
+					<span class="userlink">
+						<a href="/signin.html">登录</a>
+						<span class="sep">|</span>
+						<a href="/signup.html">注册</a>
+					</span>
+					<% }else{ %>
+					<span class="userlink">
+						<a class="username" href="/user/myaccount.html">hi,<%= user[0].member_code %></a>
+						<span class="sep">|</span>
+						<a href="out.html">退出</a>
+					</span>
+					<% } %>
+				</li>
+				<li class="navbar-item ">
+					<a class="iconlink iconlink-account" data-hover="dropdown" href="/user/myaccount.html">
+						<i class="iconfont icon-account"></i>
+						我的账户
+					</a>
+					<div class="dropdown-menu dropdown-menu-mylipin">
+						<i class="dropdown-arrow dropdown-arrow1"></i>
+						<i class="dropdown-arrow dropdown-arrow2"></i>
+						<ul class="dropdown-menu-list fn-clear">
+							<li>
+								<a href="/user/sellcards.html">
+									<i class="iconfont icon-sell text-success"></i>
+									我要卖卡
+								</a>
+							</li>
+							<li>
+								<a href="/user/selldetail.html">
+									<i class="iconfont icon-history text-warning"></i>
+									卖卡记录
+								</a>
+							</li>
+							<li class="last">
+								<a href="/user/mydatum.html">
+									<i class="iconfont icon-profile text-info"></i>
+									资料管理
+								</a>
+							</li>
+						</ul>
+					</div>
+				</li>
+				<li class="navbar-item">
+					<a class="iconlink" data-hover="dropdown" href="javascript:;">
+						<i class="iconfont icon-mobile"></i>
+					</a>
+					<div class="dropdown-menu dropdown-menu-qrcode">
+						<i class="dropdown-arrow dropdown-arrow1"></i>
+						<i class="dropdown-arrow dropdown-arrow2"></i>
+						<img src="./img/wap.png">
+						<p>扫一扫，手机看</p>
+					</div>
+				</li>
+				<li class="navbar-item">
+					<a class="iconlink" data-hover="dropdown" href="javascript:;">
+						<i class="iconfont icon-qrcode"></i>
+					</a>
+					<div class="dropdown-menu dropdown-menu-qrcode">
+						<i class="dropdown-arrow dropdown-arrow1"></i>
+						<i class="dropdown-arrow dropdown-arrow2"></i>
+						<img src="./img/wx.png">
+						<p>关注礼品网微信</p>
+					</div>
+				</li>
+				<li class="navbar-item">
+					<a class="iconlink" id="addcollect" href="javascript:;">
+						<i class="iconfont icon-star"></i>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>

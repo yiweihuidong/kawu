@@ -1,0 +1,40 @@
+<div class="box help-aside">
+	<dl class="help-links">
+		<dt>关于我们</dt>
+		<dd>
+			<a href="/company/introduction.html">公司简介</a>
+		</dd>
+		<dd>
+			<a href="/company/disclaimer.html">免责声明</a>
+		</dd>
+		<dd>
+			<a href="/company/agreement.html">注册协议</a>
+		</dd>
+		<dd>
+			<a href="/company/contctus.html">联系我们</a>
+		</dd>
+	</dl>
+	<dl class="help-links">
+		<dt>帮助中心</dt>
+		<dd>
+			<a href="/help/help.html">交易方式</a>
+		</dd>
+		<dd>
+			<a href="/help/cooperation.html">商家合作</a>
+		</dd>
+		<dd>
+			<a href="/help/questions.html">常见问题</a>
+		</dd>
+	</dl>
+</div>
+<script type="text/javascript">
+	$(function(){
+		var nowurl = window.location.pathname;
+		$(".box a").each(function(i,o){
+			if($(this).attr('href') == nowurl){
+				$(this).parent().addClass("current")
+				return false;
+			}
+		});	
+	})
+</script>

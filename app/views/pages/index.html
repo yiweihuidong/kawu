@@ -1,0 +1,177 @@
+<%- include ../layout.html %>
+	<script src="/js/unslider.min.js"></script>
+	<style type="text/css">
+		.banner {position: relative;}
+		.banner .dots {
+			position: absolute;
+			left: 0;
+			right: 0;
+			bottom: 20px;
+		}
+		.banner .dots li {
+			display: inline-block;
+			width: 10px;
+			height: 10px;
+			margin: 0 4px;
+
+			text-indent: -999em;
+
+			border: 2px solid #fff;
+			border-radius: 6px;
+
+			cursor: pointer;
+			opacity: .4;
+
+			-webkit-transition: background .5s, opacity .5s;
+			-moz-transition: background .5s, opacity .5s;
+			transition: background .5s, opacity .5s;
+		}
+		.banner .dots li.active {
+			background: #fff;
+			opacity: 1;
+		}
+
+	</style>
+	<div class="banner has-dots" style="min-height: 415px">
+		<ul>
+			<li style="width: 25%;background-size: 100% 100%;">
+				<div class="container masthead-jumbotron png">
+					<h2>51卡务网</h2>
+					<h3>我们是专业的二手礼品卡回收网站</h3>
+					<h4>您可以将手中置闲的电商卡、旅游卡、游戏卡、话费卡、加油卡、商超卡轻松变现</h4>
+				</div>
+			</li>
+
+			<li style="width: 25%; background-size: 100% 100%;">
+				<div class="container masthead-jumbotron png">
+					<h2>51卡务网</h2>
+					<h3>我们是专业的二手礼品卡回收网站</h3>
+					<h4>您可以将手中置闲的电商卡、旅游卡、游戏卡、话费卡、加油卡、商超卡轻松变现</h4>
+				</div>
+			</li>
+
+			<li style="width: 25%; background-size: 100% 100%;">
+				<div class="container masthead-jumbotron png">
+					<h2>51卡务网</h2>
+					<h3>我们是专业的二手礼品卡回收网站</h3>
+					<h4>您可以将手中置闲的电商卡、旅游卡、游戏卡、话费卡、加油卡、商超卡轻松变现</h4>
+				</div>
+			</li>
+
+			<li style="width: 25%; background-size: 100% 100%;">
+				<div class="container masthead-jumbotron png">
+					<h2>51卡务网</h2>
+					<h3>我们是专业的二手礼品卡回收网站</h3>
+					<h4>您可以将手中置闲的电商卡、旅游卡、游戏卡、话费卡、加油卡、商超卡轻松变现</h4>
+				</div>
+			</li>
+		</ul>
+	</div>
+	<div class="section">
+    <div class="section-box">
+        <div class="hot-store">
+            <div class="container">
+                <h2>热门推荐</h2>
+                <ul>
+                    <li class="store-pic"><img src="img/hotstore/123_07.png" alt=""/></li>
+                    <li class="store-pic"><img src="img/hotstore/123_09.png" alt=""/></li>
+                    <li class="store-pic"><img src="img/hotstore/123_11.png" alt=""/></li>
+                    <li class="store-pic"><img src="img/hotstore/123_13.png" alt=""/></li>
+                    <li class="store-pic"><img src="img/hotstore/123_15.png" alt=""/></li>
+                </ul>
+            </div>
+        </div>
+        <div class="public-course">
+            <div class="container">
+                <h3>51卡务公开课</h3>
+                <ul>
+                    <li class="course-pic"><img src="img/course/50.png" alt=""/></li>
+                    <li class="course-pic"><img src="img/course/52.png" alt=""/></li>
+                    <li class="course-pic"><img src="img/course/53.png" alt=""/></li>
+                    <li class="course-pic"><img src="img/course/57.png" alt=""/></li>
+                    <li class="course-pic"><img src="img/course/58.png" alt=""/></li>
+                    <li class="course-pic"><img src="img/course/60.png" alt=""/></li>
+                </ul>
+            </div>
+        </div>
+        <div class="user">
+            <img src="img/1_02.png"/>
+        </div>
+        <div class="service">
+            <img src="img/1_04.jpg"/>
+        </div>
+        <div class="pay">
+            <div class="container">
+                <div class="pay-f">
+                    <i class="honor"></i>
+
+                    <div>
+                        <h3>资质认证</h3>
+                        <span>100%人工审核认证</span>
+                    </div>
+                </div>
+                <div class="pay-f">
+                    <i class="safety"></i>
+
+                    <div>
+                        <h3>支付安全</h3>
+                        <span>明码支付标价及支付安全</span>
+                    </div>
+                </div>
+                <div class="pay-f">
+                    <i class="service"></i>
+
+                    <div>
+                        <h3>专人服务</h3>
+                        <span>服务全程进行信息化监控</span>
+                    </div>
+                </div>
+                <div class="pay-f">
+                    <i class="sale"></i>
+
+                    <div>
+                        <h3>售后无忧</h3>
+                        <span>服务出问题客户经理全程跟进</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+	<script>
+			if(window.chrome) {
+				$('.banner li').css('background-size', '100% 100%');
+			}
+
+			$('.banner').unslider({
+				arrows: false,
+				fluid: true,
+				dots: true
+			});
+
+			//  Find any element starting with a # in the URL
+			//  And listen to any click events it fires
+			$('a[href^="#"]').click(function() {
+				//  Find the target element
+				var target = $($(this).attr('href'));
+
+				//  And get its position
+				var pos = target.offset(); // fallback to scrolling to top || {left: 0, top: 0};
+
+				//  jQuery will return false if there's no element
+				//  and your code will throw errors if it tries to do .offset().left;
+				if(pos) {
+					//  Scroll the page
+					$('html, body').animate({
+						scrollTop: pos.top,
+						scrollLeft: pos.left
+					}, 1000);
+				}
+
+				//  Don't let them visit the url, we'll scroll you there
+				return false;
+			});
+		</script>
+	<%- include ../includes/footer.html %>

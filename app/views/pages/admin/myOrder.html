@@ -1,0 +1,50 @@
+<%- include ../../userlayout.html %>
+	<div id="bank-dialog" class="modal fn-hide"></div>
+		<div class="view-framework">
+		<%- include ../../includes/userleft.html %>
+		<div class="view-framework-body">
+			<div class="container-fluid">
+				<div class="view-framework-main">
+					<h3 class="clearfix">我的订单</h3>
+					<div class="account-content order-content">
+						<div class="box">
+							<div class="nodata">
+								<i class="iconfont icon-nodata"></i>
+								<br>抱歉，没有找到任何相关的数据！</div>
+						</div>
+					</div>
+				</div>
+				<%- include ../../includes/userfooter.html %>
+			</div>
+		</div>
+	</div>
+	<script>function cancel(order) {openconfirm("删除订单["+order+"]？",'', function (obj) {$.post('/?do=account&act=order&to=del', "order=" + order, function (data) {if (data=="0") {obj.find('#oconfirm').html("本次操作没有成功！");} else {$("#order_"+order).fadeOut(function() {$(this).remove();});obj.dialog("close");}});},500);}</script>
+	<div class="backtop" id="back-to-top">
+		<ul class="backtop-group">
+			<li>
+				<a class="iconimg wap" data-hover="dropdown" href="javascript:;">加关注</a>
+				<div class="dropdown-menu">
+					<img src="./我的订单 - 51卡务网_files/wx.png" alt=""></div>
+			</li>
+			<li>
+				<a class="iconimg qq" target="_blank" href="http://wpa.qq.com/msgrd?v=3&amp;uin=11215476&amp;site=qq&amp;menu=yes">QQ在线咨询</a>
+			</li>
+			<li>
+				<a class="iconimg online" href="javascript:NTKF.im_openInPageChat(&#39;kf_9665_1445856633743&#39;)">在线客服</a>
+			</li>
+			<li>
+				<a class="iconimg totop" id="totop" href="account/act_order#top" style="display: none;">回到顶部</a>
+			</li>
+		</ul>
+	</div>
+	<div id="modal-dialog" class="modal hide"></div>
+	<div class="modal-cover hide" id="modal-dialog-cover"></div>
+	<div style="display:none">
+		<script src="./我的订单 - 51卡务网_files/z_stat.php" language="JavaScript"></script>
+		<script src="./我的订单 - 51卡务网_files/core.php" charset="utf-8" type="text/javascript"></script>
+		<a href="http://www.cnzz.com/stat/website.php?web_id=1254973404" target="_blank" tip="站长统计">站长统计</a>
+	</div>
+	<script>var NTKF_PARAM = {settingid: 'kf_9665_1445856633743',uname: getCookie("wq_username"),iconid: '0'}</script>
+	<script type="text/javascript" charset="utf-8" src="./我的订单 - 51卡务网_files/ntkfstat.js"></script>
+</body>
+</html>

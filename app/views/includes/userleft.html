@@ -1,0 +1,87 @@
+<div class="view-framework-sidebar">
+	<div class="sidebar-inner">
+		<div class="sidebar-weixin">
+			<h5>扫描二维码，绑定微信</h5>
+			<p>
+				绑定微信后，你的订单受理
+				<br>等信息都会通过微信提醒您</p>
+			<img width="160" src="/img/wap.png"></div>
+		<div class="sidebar-nav">
+			<div class="sidebar-title">
+				<i class="iconfont icon-dashboard"></i>
+				账户中心
+			</div>
+			<ul class="sidebar-trans clearfix">
+				<li>
+					<a href="/user/myaccount.html">
+						<i class="iconfont icon-bag"></i>
+						我的账户
+					</a>
+				</li>
+				<li>
+					<a href="/user/sellcards.html">
+						<i class="iconfont icon-sell"></i>
+						我要卖卡
+					</a>
+				</li>
+				<li>
+					<a href="/user/selldetail.html">
+						<i class="iconfont icon-history"></i>
+						卖卡记录
+					</a>
+				</li>
+				<li>
+					<a href="/user/myorder.html">
+						<i class="iconfont icon-order"></i>
+						我的订单
+					</a>
+				</li>
+			</ul>
+		</div>
+		<div class="sidebar-nav">
+			<div class="/user/sidebar-title">
+				<i class="iconfont icon-set"></i>
+				资料管理
+			</div>
+			<ul class="sidebar-trans clearfix">
+				<li>
+					<a href="/user/mydatum.html">
+						<i class="iconfont icon-profile"></i>
+						我的资料
+					</a>
+				</li>
+				<li>
+					<a href="/user/setemail.html">
+						<i class="iconfont icon-mail"></i>
+						邮箱认证
+					</a>
+				</li>
+				<li>
+					<a href="/user/setphone.html">
+						<i class="iconfont icon-phone"></i>
+						手机认证
+					</a>
+				</li>
+				<li>
+					<a href="/user/setpassword.html">
+						<i class="iconfont icon-pass"></i>
+						密码设置
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	$(function(){
+		var nowurl = window.location.pathname.replace('/','');
+		$(".sidebar-nav a").each(function(i,o){
+			if($(this).attr('href') == nowurl){
+				$(this).parent().addClass("current")
+				return false;
+			}
+		});	
+	})
+	
+
+</script>

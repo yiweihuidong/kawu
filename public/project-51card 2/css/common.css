@@ -1,0 +1,42 @@
+body, ul, li, dl, dd, dt, p, h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.header, .nav, .banner, .section, .footer {
+    width: 100%;
+
+}
+.header-box,.nav-box,.banner-box,.footer-box {
+    min-width:810px;
+    width:810px;
+    margin: 0 auto;
+
+}
+
+a {
+    text-decoration: none;
+
+}
+a:hover {
+    text-decoration: underline;
+    color: blue;
+}
+
+body, a {
+    color: #484848;
+    font: 14px/1.42857143 "Microsoft YaHei", Arial, Tahoma, "Hiragino Sans GB", simsun;
+}
+
+.hot-score, .public-course, .user, .service, .pay, .code {
+    width: 100%;
+}
+
+.section .container {
+    min-width:810px;
+    width:810px;
+    margin:0 auto;
+    text-align: center;
+}
+

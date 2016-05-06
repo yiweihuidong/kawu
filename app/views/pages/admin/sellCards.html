@@ -1,0 +1,334 @@
+<%- include ../../userlayout.html %>
+	<div id="bank-dialog" class="modal fn-hide"></div>
+		<div class="view-framework">
+		<%- include ../../includes/userleft.html %>
+		<div class="view-framework-body">
+			<div class="container-fluid">
+				<div class="view-framework-main">
+					<h3 class="clearfix">
+						<a class="btn btn-small pull-right" href="/user/selldetail.html">查看我的卖卡记录</a>
+						我要卖卡
+						<small class="pl10">
+							<!-- <a href="" target="_blank">查看卖卡流程</a> -->
+						</small>
+					</h3>
+					<div class="box">
+						<div class="recycle-panel">
+							<div class="alert">
+								<p>
+									您好，<%= user.member_code %>，您是51卡务网
+									<span class="text-red">【普通回收】</span>
+									客户
+								</p>
+								<p> <strong>提示：</strong>
+									为了更有效快捷的交易，请务必填写正确的且未使用的卡号与卡密。如发现恶性提交，我们将实行冻结账号，封号等措施。
+								</p>
+							</div>
+							<div class="recycle-loading" style="display: none;">
+								<i class="iconimg icon-loading"></i>
+								回收表单加载中，请稍候...
+							</div>
+							<div class="recycle-form hide" style="display: block;">
+								<form method="post" id="sell">
+									<div class="form-group">
+										<div class="col-xs-1">
+											<label class="control-label">选择卡类：</label>
+										</div>
+										<div class="col-xs-11">
+											<ul class="btn-group btn-group-cardtype">
+												<% var color = ['red','green','orange','purple','blue','brown'];%>
+												<li class="active">
+													<a class="btn-card btn-btoc bg-<%= color[0] %>" href="" data-target="card-btoc">
+														<i class="iconfont icon-btoc"></i>
+														<%= cards[0].name %><b></b>
+													</a>
+												</li>
+												<% for(var i=1;i<cards.length;i++){ %>
+												<li>
+													<a class="btn-card btn-btoc bg-<%= color[i] %>" href="" data-target="card-btoc">
+														<i class="iconfont icon-btoc"></i>
+														<%= cards[i].name %><b></b>
+													</a>
+												</li>
+												<% } %>
+									<!-- 		<li class="active">
+													<a class="btn-card btn-btoc bg-red" href="account/act_sell###" data-target="card-btoc">
+														<i class="iconfont icon-btoc"></i>
+														电商卡回收 <b></b>
+													</a>
+												</li>
+												<li>
+													<a class="btn-card btn-trip bg-green" href="account/act_sell###" data-target="card-trip">
+														<i class="iconfont icon-trip"></i>
+														旅游卡回收 <b></b>
+													</a>
+												</li>
+												<li>
+													<a class="btn-card btn-mart bg-orange" href="account/act_sell###" data-target="card-mart">
+														<i class="iconfont icon-mart"></i>
+														商超卡回收
+														<b></b>
+													</a>
+												</li> -->
+											</ul>
+										</div>
+									</div>
+									<hr>
+									<div class="form-group">
+										<div class="col-xs-1">
+											<label class="control-label">选择卡种：</label>
+										</div>
+										<div class="col-xs-11">
+											<ul class="btn-group btn-group-card xzkz" id="card-btoc">
+												<% var newtype = cards[0].cardstypes;%>
+												<li class="active">
+													<a class="btn" href="javascript:;" onclick="cselect(this);" val="1">
+														<img src="<%= newtype[0].logo_url %>">
+														<%= newtype[0].card_name %>
+														<b></b>
+													</a>
+												</li>
+												<% for(var i=1;i<newtype.length;i++){ %>
+												<li>
+													<a class="btn" href="javascript:;" onclick="cselect(this);" val="1">
+														<img src="<%= newtype[i].logo_url %>">
+														<%= newtype[i].card_name %>
+														<b></b>
+													</a>
+												</li>
+												<% } %>
+												<!-- <li class="active">
+													<a class="btn" href="javascript:;" onclick="cselect(this);" val="1">
+														<img src="./我要卖卡 - 51卡务网_files/2.gif">
+														京东E卡
+														<b></b>
+													</a>
+												</li>
+												<li>
+													<a class="btn" href="javascript:;" onclick="cselect(this);" val="2">
+														<img src="./我要卖卡 - 51卡务网_files/4.gif">
+														苏宁易购礼品卡
+														<b></b>
+													</a>
+												</li>
+												<li>
+													<a class="btn" href="javascript:;" onclick="cselect(this);" val="3">
+														<img src="./我要卖卡 - 51卡务网_files/5.gif">
+														一号店礼品卡
+														<b></b>
+													</a>
+												</li> -->
+											</ul>
+											<ul class="btn-group btn-group-card xzkz hide" id="card-cost">
+												<li>
+													<a class="btn" href="javascript:;" onclick="cselect(this);" val="35">
+														<img src="./我要卖卡 - 51卡务网_files/19.gif">
+														电信卡
+														<b></b>
+													</a>
+												</li>
+												<li>
+													<a class="btn" href="javascript:;" onclick="cselect(this);" val="36">
+														<img src="./我要卖卡 - 51卡务网_files/18.gif">
+														联通卡
+														<b></b>
+													</a>
+												</li>
+											</ul>
+											<ul class="btn-group btn-group-card xzkz hide" id="card-game">
+												<li>
+													<a class="btn" href="javascript:;" onclick="cselect(this);" val="29">
+														<img src="./我要卖卡 - 51卡务网_files/26.gif">
+														纵游一卡通
+														<b></b>
+													</a>
+												</li>
+												<li>
+													<a class="btn" href="javascript:;" onclick="cselect(this);" val="30">
+														<img src="./我要卖卡 - 51卡务网_files/23.gif">
+														久游一卡通
+														<b></b>
+													</a>
+												</li>
+											</ul>
+											<ul class="btn-group btn-group-card xzkz hide" id="card-oils">
+												<li>
+													<a class="btn" href="javascript:;" onclick="cselect(this);" val="0">
+														<img src="./我要卖卡 - 51卡务网_files/42.gif">
+														中石化加油卡
+														<b></b>
+													</a>
+												</li>
+											</ul>
+										</div>
+									</div>
+									<div class="form-group" id="card-facevalue-wrapper">
+										<div class="col-xs-1">
+											<label class="control-label">选择面值：</label>
+										</div>
+										<div class="col-xs-11">
+											<ul class="btn-group btn-group-price" id="card-facevalue">
+												<li>
+													<a class="btn" href="javascript:;" onclick="pselect(this,1000);" val="12">
+														¥1000.0
+														<small>/ ¥940.0(回收价)</small>
+														<b></b>
+													</a>
+												</li>
+												<li>
+													<a class="btn" href="javascript:;" onclick="pselect(this,800);" val="54">
+														¥800.0
+														<small>/ ¥752.0(回收价)</small>
+														<b></b>
+													</a>
+												</li>
+												<li>
+													<a class="btn" href="javascript:;" val="77|0" cid="77" price="0.90" onclick="pselect(this,0);" zdy="9999">
+														自定义面值
+														<b></b>
+													</a>
+												</li>
+											</ul>
+										</div>
+									</div>
+									<hr>
+									<div class="form-group" id="batch">
+										<div class="col-xs-1">
+											<label class="control-label">选择数量：</label>
+										</div>
+										<div class="col-xs-11">
+											<ul class="btn-group btn-group-card btn-group-units" id="card-species">
+												<li id="units1" onclick="setTab(&#39;units&#39;,1,2);$(&#39;#type&#39;).val(0);" class="active">
+													<a class="btn btn-outline" href="javascript:;">
+														<i class="iconfont icon-single"></i>
+														单张回收
+														<b></b>
+													</a>
+												</li>
+												<li id="units2" onclick="setTab(&#39;units&#39;,2,2);$(&#39;#type&#39;).val(1);">
+													<a class="btn btn-outline" href="javascript:;">
+														<i class="iconfont icon-batch"></i>
+														批量回收
+														<b></b>
+													</a>
+												</li>
+											</ul>
+										</div>
+									</div>
+									<div id="con_units_1">
+										<div class="form-group">
+											<div class="col-xs-1">
+												<label class="control-label">输入卡号：</label>
+											</div>
+											<div class="col-xs-5">
+												<div class="mr30">
+													<input class="form-control" name="cardid[]" type="text" placeholder="输入卡号"></div>
+											</div>
+											<div class="col-xs-1">
+												<label class="control-label">输入密码：</label>
+											</div>
+											<div class="col-xs-5">
+												<div class="mr30">
+													<input class="form-control" name="cardpsw[]" type="text" placeholder="请输入密码" reg="^[A-Za-z0-9_-]{4,30}$" null="必须输入卡密"></div>
+											</div>
+										</div>
+										<div class="form-group hide" id="sell-passcode" style="display: none;">
+											<div class="col-xs-1">
+												<label class="control-label">卡验证码：</label>
+											</div>
+											<div class="col-xs-3">
+												<input class="form-control" name="cardcode[]" type="text" placeholder="请输入验证码" maxlength="4"></div>
+										</div>
+									</div>
+									<div class="form-group hide" id="con_units_2">
+										<div class="col-xs-1">
+											<label class="control-label">卡号/密码：</label>
+										</div>
+										<div class="col-xs-11">
+											<p class="help-block text-danger textarea-hint">
+												卡号与密码之间请用 <strong>“空格”</strong>
+												隔开！
+											</p>
+											<div class="textarea-wrapper">
+												<textarea class="form-control" name="cardlist" id="cardlist" onkeydown="cardnum(this,event)"></textarea>
+												<div class="textarea-tips-wrapper">
+													<ul class="textarea-tips" id="card-tips"></ul>
+												</div>
+											</div>
+											<p class="help-block">
+												已经输入
+												<strong id="cardnum" class="text-red">0</strong>
+												张面值
+												<strong class="text-red"><strong id="cardmz">100</strong>
+													元</strong> 
+												的卡，每次最多可提交100张
+											</p>
+										</div>
+									</div>
+									<div class="form-group fast-deal">
+										<div class="col-xs-11 col-xs-offset-1">
+											<label class="checkbox" for="urgent">
+												<input type="checkbox" id="urgent">
+												我要加急处理
+												<span class="gray">(9:00-18:00)</span>
+												<span class="text-red fn-hide" id="urgent-money">（手续费:3%）</span>
+											</label>
+										</div>
+									</div>
+									<div class="form-group">
+										<div class="col-xs-11 col-xs-offset-1">
+											<input type="hidden" name="urgent" value="0">
+											<input type="hidden" name="type" id="type" value="0">
+											<input type="hidden" name="cardtype[]" id="cardtype" value="2">
+											<input type="hidden" name="cardprice[]" id="cardprice" value="0">
+											<input type="hidden" name="refer" value="account.html">
+											<input type="hidden" name="formhash" value="3f959c23">
+											<input class="btn btn-green btn-lg pull-left" type="button" id="sellbutton" name="sell" value="确认提交卖卡" onclick="tijiao();">
+											<p class="pt10 pl20 fsz20 text-red pull-left" id="cardnote">卡号可以随意填，卡密一定要正确</p>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+				<%- include ../../includes/userfooter.html %>
+			</div>
+		</div>
+	</div>
+	<div id="carddiy" class="modal hide" style="width: 240px">
+		<div class="cardprice-modal">
+			<div class="form-group">
+				<div class="mr4">
+					<input class="form-control" name="cardprice" type="text" placeholder="请输入卡面值" maxlength="20"></div>
+			</div>
+			<div class="form-group">
+				<button class="btn btn-primary btn-block" type="button" name="login-form" onclick="idiyselect();">确 定</button>
+			</div>
+		</div>
+	</div>
+	<script>
+		
+	</script>
+<!-- 	<div class="backtop" id="back-to-top">
+		<ul class="backtop-group">
+			<li>
+				<a class="iconimg wap" data-hover="dropdown" href="javascript:;">加关注</a>
+				<div class="dropdown-menu">
+					<img src="./我要卖卡 - 51卡务网_files/wx.png" alt=""></div>
+			</li>
+			<li>
+				<a class="iconimg qq" target="_blank" href="">QQ在线咨询</a>
+			</li>
+			<li>
+				<a class="iconimg online" href="javascript:NTKF.im_openInPageChat(&#39;kf_9665_1445856633743&#39;)">在线客服</a>
+			</li>
+			<li>
+				<a class="iconimg totop" id="totop" href="account/act_sell#top" style="display: none;">回到顶部</a>
+			</li>
+		</ul>
+	</div>
+	<div id="modal-dialog" class="modal hide"></div>
+	<div class="modal-cover hide" id="modal-dialog-cover"></div> -->
+</body>
+</html>

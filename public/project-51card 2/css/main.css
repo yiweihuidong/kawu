@@ -1,0 +1,347 @@
+/*头部样式*/
+.header {
+    height: 30px;
+    line-height: 30px;
+    background-color: RGB(245, 245, 245);
+}
+
+.header-box {
+    overflow: hidden;
+}
+
+div.h-left {
+    float: left;
+}
+div.h-left > i {
+    display: inline-block;
+    width: 12px;
+    height: 16px;
+    background: url('../img/1.png') no-repeat -37px -12px;
+    float: left;
+    margin-top: 7px;
+    margin-left: 20px;
+}
+
+div.h-left > span {
+    margin-left: 9px;
+    margin-right: 17px;
+    line-height: 30px;
+    float: left;
+}
+div.h-left > a.drop, ul.h-right > li > a.drop {
+    display: inline-block;
+    width: 12px;
+    height: 7px;
+    background: url('../img/1.png') no-repeat -66px -17px;
+    margin-top: 11px;
+}
+div.h-left > .drop {
+    float: left;
+    margin-right: 17px;
+}
+
+ul.h-right {
+    float: right;
+}
+ul.h-right > li > b {
+    display: inline-block;
+    width: 9px;
+    height: 17px;
+    background: url('../img/1.png') no-repeat -12px -11px;
+    margin-top: 6px;
+}
+
+ul.h-right > li {
+    float: left;
+    margin-left: 20px;
+}
+
+.header .one {
+    color: #ddd;
+}
+
+/*导航*/
+.nav {
+    background-color: #fff;
+
+}
+.nav-box {
+    margin-top: 15px;
+    margin-bottom: 25px;
+    overflow: hidden;
+}
+
+.nav > .nav-box > img.logo {
+    float: left;
+    width: 33%;
+    height: 45px;
+}
+
+.nav ul.nav-right {
+    float: right;
+
+}
+
+.nav ul.nav-right > li {
+    float: left;
+    margin-left: 24px;
+    line-height:25px;
+}
+
+.nav-box > ul > li > span {
+    display: inline-block;
+    background-image: url('../img/1.png');
+    background-repeat: no-repeat;
+    float:left;
+}
+.nav-box > ul > li >a{
+    float:left;
+    margin:3px 0 0 10px;
+    color:#bbb;
+}
+.nav-box > ul > li > span.honor {
+    width: 25px;
+    height: 25px;
+    background-position: -103px -11px;
+}
+
+.nav-box > ul > li > span.safety {
+    width: 25px;
+    height: 25px;
+    background-position: -145px -7px;
+}
+
+.nav-box > ul > li > span.service {
+    width: 25px;
+    height: 25px;
+    background-position: -181px -8px;
+}
+
+.nav-box > ul > li > span.sale {
+    width: 25px;
+    height: 25px;
+    background-position: -227px -8px;
+}
+
+/*banner*/
+.banner {
+    clear: both;
+    height:315px;
+
+}
+.banner>img{
+    width:100%;
+    min-width:1350px;
+}
+/*主体*/
+/*热门推荐部分*/
+.section .hot-store {
+    background-color: #eee;
+    padding-top: 22px;
+    padding-bottom: 37px;
+}
+
+.section .hot-store li.store-pic {
+    float: left;
+    width: 20%;
+}
+.section .hot-store li.store-pic >img{
+        width: 90%;
+        min-width:90%;
+}
+.section .hot-store ul {
+    overflow: hidden;
+    margin-top: 40px;
+}
+/*51卡务公开课部分*/
+.section .public-course {
+    padding-top: 60px;
+    padding-bottom: 20px;
+}
+.section .public-course>div.container>h3{
+    font-size: 25px;
+    font-family:'simsun';
+    font-weight:800;
+    color:#000;
+}
+.section .public-course ul {
+    overflow: hidden;
+    margin-top: 22px;
+}
+.section .public-course li.course-pic {
+    float: left;
+    width: 33%;
+    margin-top: 10px;
+}
+.section .public-course li.course-pic >img{
+    width: 96%;
+}
+/*用户品评价部分*/
+.section .user {
+    clear: both;
+}
+.section .user >img{
+    width:100%;
+    min-width:1350px;
+}
+/*一站式服务部分*/
+.section .service>img{
+    min-width:1350px;
+    width:100%;
+}
+/*资质认证支付安全等*/
+.section .pay {
+    background-color: RGB(245, 245, 245);
+    overflow: hidden;
+    padding-top: 45px;
+    padding-bottom: 50px;
+}
+.section .pay > .container{
+   overflow:hidden;
+    min-width:945px;
+
+
+}
+.section  .pay > .container > ul {
+    overflow: hidden;
+}
+
+.section .pay .pay-f {
+    float: left;
+    width:25%;
+}
+
+.section .pay .pay-f > div {
+    float: left;
+    margin-left: 22px;
+    text-align: left;
+}
+
+.section .pay .pay-f > div > h3 {
+    margin-bottom: 10px;
+}
+
+.section .pay .pay-f > div > span {
+    font-size: 12px;
+}
+
+.section .pay .pay-f > i {
+    float: left;
+    display: inline-block;
+    background-image: url('../img/1.png');
+    background-repeat: no-repeat;
+}
+
+.section .pay .pay-f > i.honor {
+    width: 56px;
+    height: 56px;
+    background-position: 0 -59px;
+}
+
+.section .pay .pay-f > i.safety {
+    width: 48px;
+    height: 57px;
+    background-position: -81px -58px;
+}
+
+.section .pay .pay-f > i.service {
+    width: 60px;
+    height: 57px;
+    background-position: -151px -50px;
+}
+.section .pay .pay-f > i.sale {
+    width: 57px;
+    height: 57px;
+    background-position: -8px -157px;
+}
+/*二维码扫描部分*/
+.section .code {
+    background-color: #fff;
+    overflow: hidden;
+    margin-top: 52px;
+    margin-bottom: 45px;
+}
+div.code > div.container {
+    overflow: hidden;
+    min-width:1080px;
+}
+div.code ul.supply {
+    padding: 8px 15px 15px 10px;
+    float: left;
+    overflow: hidden;
+    background-color: RGB(245, 245, 245);
+    width:40%;
+}
+
+div.code ul.supply > li {
+    margin-right: 70px;
+    float: left;
+    }
+
+div.code ul.supply > li.last {
+    margin-right: 0;
+
+}
+
+div.code ul.supply > li > ul > li {
+    font-size: 11px;
+    margin-bottom: 10px;
+    text-align:left;
+}
+
+div.code ul.supply > li > ul > li.title {
+    font-size: 12px;
+    color: #bbb;
+}
+
+div.code b.quare {
+    display: inline-block;
+    float: left;
+    width: 175px;
+    height: 175px;
+    background: url('../img/1.png') no-repeat -104px -176px;
+    margin: 0 40px;
+}
+
+div.code span.focus {
+    font-size: 12px;
+    float: left;
+    color: #bbb;
+    margin-top: 70px;
+}
+
+div.code div.support {
+    float: left;
+    margin-left: 55px;
+    text-align: left;
+}
+
+div.code div.support > h2 {
+    font-weight: 400;
+    margin: 15px 0;
+}
+
+div.code div.support > p {
+    margin-bottom: 30px;
+}
+
+div.code div.support > span {
+    padding: 10px;
+    background-color: RGB(245, 245, 245);
+    border: 1px solid #ccc;
+}
+/*页脚*/
+div.footer {
+    background-color: RGB(245, 245, 245);
+    padding: 30px 0;
+}
+
+div.footer > .footer-box {
+    color: #aaa;
+    text-align: center;
+    font-size: 12px;
+}
+
+div.footer > .footer-box > p {
+    margin-bottom: 10px;
+}

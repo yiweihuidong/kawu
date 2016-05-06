@@ -1,0 +1,53 @@
+<div class="header">
+    <div class="header-box">
+        <div class="h-left">
+            <!--<i></i>-->
+            <span>天津市</span>
+            <!--<a class="drop" href="#"></a>-->
+            <span class="one">|</span>
+        </div>
+        <ul class="h-right">
+            <% if(typeof(user) == 'undefined'){ %>
+                <li><a href="/signin.html">登录</a></li>
+                <li class="one">|</li>
+                <li><a href="/signup.html">免费注册</a></li>
+            <% }else{ %>
+                <li><a class="username" href="/user/myaccount.html">hi,<%= user.member_code %></a></li>
+                <li class="one">|</li>
+                <li><a href="out.html">退出</a></li>
+            <% } %>
+            <li class="one">|</li>
+            <li><a href="/user/myaccount.html">我的订单</a></li>
+            <li class="one">|</li>
+            <li><a href="#">服务商入口</a></li>
+            <li class="one">|</li>
+            <!--<li><b></b></li>-->
+            <li><a href="#">移动应用</a></li>
+            <!--<li><a class="drop" href="#"></a></li>-->
+        </ul>
+        <div></div>
+    </div>
+</div>
+<div class="nav">
+    <div class="nav-box">
+        <a href="/index.html"><img class="logo" src="/img/nav/logo.png" alt=""/></a>
+        <ul class="nav-right">
+            <li>
+                <span class="honor"></span>
+                <a href="#">资质认证</a>
+            </li>
+            <li>
+                <span class="safety"></span>
+                <a href="#">支付安全</a>
+            </li>
+            <li>
+                <span class="service"></span>
+                <a href="#">专人服务</a>
+            </li>
+            <li>
+                <span class="sale"></span>
+                <a href="#">售后无忧</a>
+            </li>
+        </ul>
+    </div>
+</div>

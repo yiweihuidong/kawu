@@ -1,0 +1,56 @@
+<%- include ../layout.html %>
+<link rel="stylesheet" type="text/css" href="/css/validform.css">
+<script type="text/javascript" src="/js/Validform_v5.3.2_min.js"></script>
+	<div class="content">
+		<div class="signin-panel">
+			<div class="container">
+				<div class="box signform">
+					<h2 class="h4 clearfix">
+						<small class="pt5 pull-right">
+							<a href="signup.html">免费注册</a>
+						</small>
+						登录51卡务网
+					</h2>
+					<form action="/signin" method="post" id="login-form" class="signinform">
+						<div class="form-group">
+							<div class="mr">
+								<label class="control-label" for="username">
+									<i class="iconfont"></i>
+								</label>
+								<input class="form-control" name="username" id="username" type="text" placeholder="邮箱/手机号码" datatype="e|m" sucmsg="用户名验证通过！" nullmsg="请输入用户名！" errormsg="请用邮箱或手机号码登录！"></div>
+						</div>
+						<div class="form-group">
+							<div class="mr">
+								<label class="control-label" for="password">
+									<i class="iconfont"></i>
+								</label>
+								<input class="form-control" name="password" id="password" type="password" placeholder="登录密码" datatype="*6-20" maxlength="20" null="登录密码输入错误"></div>
+						</div>
+						<div class="form-group">
+							<label class="checkbox pull-left">
+								<input name="autologin" type="checkbox">自动登录</label>
+							<a class="btn-link pull-right" href="">忘记登录密码?</a>
+						</div>
+						<div class="form-group">
+							<input class="btn btn-primary btn-block" type="submit" name="login-form" value="登 录">
+							<input type="hidden" name="refer" value="">
+						</div>
+						<!-- <div class="form-group">
+							<a class="btn btn-qq btn-block btn-connect" href="#" onclick="toQzoneLogin()">
+								<i class="iconfont fsz20"></i>
+								使用QQ账号登录
+							</a>
+						</div> -->
+					</form>
+				</div>
+				<div class="signbanner">
+					<img src="./img/sign.png"></div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		$(function (){
+			$(".signinform").Validform();
+		})
+	</script>
+<%- include ../includes/footer.html %>

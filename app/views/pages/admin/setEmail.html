@@ -1,0 +1,108 @@
+<%- include ../../userlayout.html %>
+	<div id="bank-dialog" class="modal fn-hide"></div>
+		<div class="view-framework">
+		<%- include ../../includes/userleft.html %>		<div class="view-framework-body">
+			<div class="container-fluid">
+				<div class="view-framework-main">
+					<h3 class="clearfix">绑定邮箱</h3>
+					<div class="box">
+						<div class="row">
+							<div class="col-xs-6 col-xs-offset-1">
+								<div class="stepflex stepflex-2">
+									<ul class="clearfix">
+										<li class="first doing">
+											<div class="stepflex-num">
+												<span>1</span>
+											</div>
+											<div class="stepflex-text">邮箱验证</div>
+										</li>
+										<li>
+											<div class="stepflex-num">
+												<span>
+													<i class="iconfont"></i>
+												</span>
+											</div>
+											<div class="stepflex-text">绑定邮箱成功</div>
+											<div class="stepflex-progress"></div>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<form id="submitemail">
+							<div class="form-group">
+								<div class="col-xs-2 col-xs-offset-1">
+									<label class="control-label" for="emailno">邮箱地址：</label>
+								</div>
+								<div class="col-xs-3">
+									<div class="mr4">
+										<input class="form-control" id="emailno" type="text" name="emailno"></div>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-xs-2 col-xs-offset-1">
+									<label class="control-label" for="ecodeno">邮箱验证码：</label>
+								</div>
+								<div class="col-xs-2">
+									<div class="mr4">
+										<input class="form-control" id="ecodeno" name="ecodeno" type="text"></div>
+								</div>
+								<div class="col-xs-6">
+									<div class="pl10">
+										<a class="btn" href="javascript:;" onclick="getcode(this,&#39;eget&#39;,&#39;email&#39;);" id="emcode">获取验证码</a>
+									</div>
+								</div>
+							</div>
+							<div class="form-group pb30">
+								<div class="col-xs-3 col-xs-offset-3">
+									<input type="hidden" name="refer" value="/account/act_emailsucceed">
+									<input type="hidden" name="formhash" value="3f959c23">
+									<a class="btn btn-primary btn-block" onclick="getcode(this,&#39;eset&#39;,&#39;email&#39;);">提交</a>
+								</div>
+							</div>
+						</form>
+					</div>
+					<div class="alert line-height-18 px30 py20">
+						<p>您的邮箱绑定之后，即可享受邮箱登录、找回密码等服务，让您的网上购物体验更安全更便捷。</p>
+						<h5> <strong>· 有了绑定邮箱账号就很安全吗？</strong>
+						</h5>
+						<p>绑定邮箱并不是高安全性的安全产品，推荐您多绑定其他几种，这样做比较安全。</p>
+						<h5> <strong>· 邮箱可正常使用但是收不到验证码怎么办？</strong>
+						</h5>
+						<p>
+							请检查您的垃圾邮件或广告邮件，并建议您在邮箱设置中，将51卡务网发件人（service@lipin.com）设置为白名单，如果您5分钟内仍未收到验证邮件，您可以重新发送。
+						</p>
+						<h5>
+							<strong>· 无法通过验证？</strong>
+						</h5>
+						<p>
+							如果您的手机和邮箱已经无法正常使用，请发送账号名（手机/邮箱/用户名）、联系手机至service@lipin.com，客服将在收到邮件后两小时内联系您。（客服工作时间为09:00-18:00）
+						</p>
+					</div>
+				</div>
+				<%- include ../../includes/userfooter.html %>
+			</div>
+		</div>
+	</div>
+	<div class="backtop" id="back-to-top">
+		<ul class="backtop-group">
+			<li>
+				<a class="iconimg wap" data-hover="dropdown" href="javascript:;">加关注</a>
+				<div class="dropdown-menu">
+					<img src="./设置邮箱 - 51卡务网_files/wx.png" alt=""></div>
+			</li>
+			<li>
+				<a class="iconimg qq" target="_blank" href="">QQ在线咨询</a>
+			</li>
+			<li>
+				<a class="iconimg online" href="javascript:NTKF.im_openInPageChat(&#39;kf_9665_1445856633743&#39;)">在线客服</a>
+			</li>
+			<li>
+				<a class="iconimg totop" id="totop" href="account/act_email#top" style="display: none;">回到顶部</a>
+			</li>
+		</ul>
+	</div>
+	<div id="modal-dialog" class="modal hide"></div>
+	<div class="modal-cover hide" id="modal-dialog-cover"></div>
+</body>
+</html>
