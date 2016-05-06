@@ -80,8 +80,24 @@
 										</div>
 										<div class="col-xs-11">
 											<ul class="btn-group btn-group-card xzkz" id="card-btoc">
-												<% var newtype = cards.cardstypes;%>
+												<% var newtype = cards[0].cardstypes;%>
 												<li class="active">
+													<a class="btn" href="javascript:;" onclick="cselect(this);" val="1">
+														<img src="<%= newtype[0].logo_url %>">
+														<%= newtype[0].card_name %>
+														<b></b>
+													</a>
+												</li>
+												<% for(var i=1;i<newtype.length;i++){ %>
+												<li>
+													<a class="btn" href="javascript:;" onclick="cselect(this);" val="1">
+														<img src="<%= newtype[i].logo_url %>">
+														<%= newtype[i].card_name %>
+														<b></b>
+													</a>
+												</li>
+												<% } %>
+												<!-- <li class="active">
 													<a class="btn" href="javascript:;" onclick="cselect(this);" val="1">
 														<img src="./我要卖卡 - 51卡务网_files/2.gif">
 														京东E卡
@@ -101,7 +117,7 @@
 														一号店礼品卡
 														<b></b>
 													</a>
-												</li>
+												</li> -->
 											</ul>
 											<ul class="btn-group btn-group-card xzkz hide" id="card-cost">
 												<li>
@@ -267,7 +283,7 @@
 											<input type="hidden" name="cardprice[]" id="cardprice" value="0">
 											<input type="hidden" name="refer" value="account.html">
 											<input type="hidden" name="formhash" value="3f959c23">
-											<input class="btn btn-green btn-lg pull-left" type="button" id="sellbutton" name="sell" value="确认提交卖卡" onclick="ceshi()">
+											<input class="btn btn-green btn-lg pull-left" type="button" id="sellbutton" name="sell" value="确认提交卖卡" onclick="tijiao();">
 											<p class="pt10 pl20 fsz20 text-red pull-left" id="cardnote">卡号可以随意填，卡密一定要正确</p>
 										</div>
 									</div>
@@ -315,45 +331,4 @@
 	<div id="modal-dialog" class="modal hide"></div>
 	<div class="modal-cover hide" id="modal-dialog-cover"></div> -->
 </body>
-<script>
-	function ceshi() {
-		alert(1)
-		var data = {
-			cardstype: $("#card-btoc>li.active>a").attr("val")
-		};
-		sajax("/cardstype","post",data,function(data){
-			alert(JSON.stringify(data))
-		});
-//		var json = JSON.stringify({
-//			cardSpecies: $("#card-species>li.active>a").attr("val"),
-//			cardFacevalue: $("#card-facevalue>li.active>a").attr("val"),
-//			cardSpecies1: $("#card-species1>li.active>a").text(),
-//			cardId: $("#con_units_1 input[name^=cardid]").val(),
-//			cardPwd: $("#con_units_1 input[name^=cardpsw]").val()
-//		});
-//		$.ajax({
-//			type: "post",
-//			url: "http://127.0.0.1:3000/cardstype",
-//			dataType: "json",
-//			data:data,
-//			contentType: "application/json; charset=utf-8",
-//			success: function (msg) {
-//				alert(msg);
-//			}
-//		});
-//		$.ajax({
-//			type: "post",
-//			url: "http://172.16.11.43:3000/cardsid",
-//			dataType: "json",
-//			data:JSON.stringify({
-//				cardSpecies: $("#card-btoc>li.active>a").attr("val")
-//			}),
-//			contentType: "application/json; charset=utf-8",
-//			success: function (msg) {
-//				alert(msg);
-//			}
-//		});
-
-	};
-</script>
 </html>

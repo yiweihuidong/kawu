@@ -38,6 +38,10 @@ module.exports = function(app) {
 	app.get('/user/setphone.html',User.setPhone)
 	app.get('/user/myorder.html',User.myOrder)
 	app.get('/user/selldetail.html',User.sellDetail)
+	//user sellcards
+	app.post('/cardstype',User.cards)
+	app.post('/cardsid',User.id)
+	app.post('/sellCardsPost',User.sellCardsPost)
 
 
 	//login

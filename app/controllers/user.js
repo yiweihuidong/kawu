@@ -103,37 +103,65 @@ exports.sellCards = function(req, res) {
 	// client.end();
 }
 exports.cards = function(req, res) {
-	var cards = req.body；
+	var cards = req.body;
+	console.log(cards)
 	if(cards){
 		var cardstype = cards.cardstype;
-		client.query("select card_name,card_desc,id,logo_url,card_type from tbl_card_info where card_type='"+cardstype+"'", function(err, results, fields) {
+		var client = mysql.createConnection(mysqlmsg);
+		client.connect();
+		client.query("use " + TEST_DATABASE);
+		client.query("select card_name,card_desc,id,logo_url,card_type from tbl_card_info where card_type="+cardstype+"", function(err, results, fields) {
 		  if(err){
-		  	res.json(config.resjson(400, "未知错误",{}))
+		  	res.json(common.resjson(400, "未知错误",{}))
 		  	console.log(err)
 		  }
 		  if(results != ""){
-		  	res.json(config.resjson(200, "获取成功",results))
+		  	res.json(common.resjson(200, "获取成功",results))
 		  	console.log(results)
 		  }
 		});
 	}else{
-		res.json(config.resjson(400, "缺少参数",{}))
+		res.json(common.resjson(400, "缺少参数",{}))
 	}
 }
 exports.id = function(req, res) {
-	var cards = req.body；
+	var cards = req.body;
 	if(cards){
 		var cardsid = cards.cardsid;
+		var client = mysql.createConnection(mysqlmsg);
+		client.connect();
+		client.query("use " + TEST_DATABASE);
 		client.query("select card_name,card_desc,id,logo_url,card_type from tbl_card_price where card_id='"+cardsid+"'", function(err, results, fields) {
 		  if(err){
-		  	res.json(config.resjson(400, "未知错误",{}))
+		  	res.json(common.resjson(400, "未知错误",{}))
 		  	console.log(err)
 		  }
 		  if(results != ""){
-		  	res.json(config.resjson(200, "获取成功",results))
+		  	res.json(common.resjson(200, "获取成功",results))
 		  	console.log(results)
 		  }
 		});
+	}else{
+		res.json(common.resjson(400, "缺少参数",{}))
+	}
+}
+exports.sellCardsPost = function(req, res){
+	var sellmsg = req.body;
+	if(sellmsg){
+		var client = mysql.createConnection(mysqlmsg);
+		client.connect();
+		client.query("use " + TEST_DATABASE);
+		client.query('INSERT INTO tbl_order_detail (bid_price,card_id,card_name,card_no,card_password,face_value,id,order_code) VALUES ("'+sellmsg.bid_price+','+sellmsg.card_id+','+sellmsg.card_name+','+sellmsg.card_no+','+sellmsg.card_password+','+sellmsg.face_value+','+sellmsg.id+','+sellmsg.order_code+'")',function selectCb(err, results, fields){  
+		    if (err) {
+		    	res.json(config.resjson(400, "未知错误",{}))
+				console.log(err)
+		    }
+		    if(results){
+				res.json(config.resjson(200, "获取成功",results))
+		  		console.log(results)
+		    }   
+		    client.end();  
+	    });
 	}else{
 		res.json(config.resjson(400, "缺少参数",{}))
 	}
