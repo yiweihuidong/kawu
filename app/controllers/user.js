@@ -72,19 +72,19 @@ exports.sellCards = function(req, res) {
 	  if(err){
 	  	console.log(err)
 	  }
-	  if(results != ""){
+	  if(results){
 	  	var cards = results;
 	  	client.query("select card_name,card_desc,id,logo_url,card_type from tbl_card_info", function(err, results, fields) {
 		  if(err){
 		  	console.log(err)
 		  }
-		  if(results != ""){
+		  if(results){
 		  	var cardstypes = results[0];
 			client.query("select bid_price,card_id,face_value,img_url from tbl_card_price", function(err, results, fields) {
 			  if(err){
 			  	console.log(err)
 			  }
-			  if(results != ""){
+			  if(results){
 			  	var cardsprice = results;
 			  	cardstypes.cardsprice = cardsprice[0];
 			  	cards[0].cardstypes = cardstypes;
@@ -115,7 +115,7 @@ exports.cards = function(req, res) {
 		  	res.json(common.resjson(400, "未知错误",{}))
 		  	console.log(err)
 		  }
-		  if(results != ""){
+		  if(results){
 		  	res.json(common.resjson(200, "获取成功",results))
 		  }
 		});
