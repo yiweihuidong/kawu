@@ -79,20 +79,22 @@ exports.sellCards = function(req, res) {
 		  	console.log(err)
 		  }
 		  if(results){
-		  	var cardstypes = results[0];
+		  	var cardstypes = results;
 			client.query("select bid_price,card_id,face_value,img_url from tbl_card_price", function(err, results, fields) {
 			  if(err){
 			  	console.log(err)
 			  }
 			  if(results){
 			  	var cardsprice = results;
-			  	cardstypes.cardsprice = cardsprice[0];
-			  	cards[0].cardstypes = cardstypes;
+			  	// cardstypes[0].cardsprice = cardsprice;
+			  	// cards[0].cardstypes = cardstypes;
 			  	console.log(cardstypes.cardsprice)
 	  			console.log(cards);
 			  	res.render('admin/sellCards',{
 					title: '我要卖卡',
-					cards: cards
+					cards: cards,
+					cardstypes: cardstypes,
+					cardsprice: cardsprice
 				});
 			  }
 			});
@@ -116,7 +118,21 @@ exports.cards = function(req, res) {
 		  	console.log(err)
 		  }
 		  if(results){
-		  	res.json(common.resjson(200, "获取成功",results))
+		  	var cardstypes = results;
+			client.query("select bid_price,card_id,face_value,img_url from tbl_card_price", function(err, results, fields) {
+			  if(err){
+			  	console.log(err)
+			  }
+			  if(results){
+			  	var cardsprice = results;
+			  	// cardstypes[0].cardsprice = cardsprice;
+			  	res.json(common.resjson(200, "获取成功",{
+			  		cardstypes: cardstypes,
+			  		cardsprice: cardsprice
+			  	}))
+			  }
+			});
+		  	// res.json(common.resjson(200, "获取成功",results))
 		  }
 		});
 	}else{
