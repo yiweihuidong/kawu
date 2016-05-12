@@ -29,6 +29,16 @@ exports.signup = function(req, res) {
         res.redirect("/user/myaccount.html")
     }
 }
+//exports.sellCards = function(req, res) {
+//  res.render('sellCards',{
+//        title: '卖卡记录',
+//    });
+//}
+exports.cardsRecovery = function(req, res) {
+  res.render('admin/cardsRecovery',{
+       title: '卡片回收',
+    });
+}
 //company
 exports.disclaimer = function(req, res) {
     res.render('disclaimer',{
