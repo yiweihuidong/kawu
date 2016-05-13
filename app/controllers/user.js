@@ -360,12 +360,15 @@ exports.signin = function(req, res) {
 	  	console.log(results)
 	  	if(password == results[0].login_password){
 	  		req.session.user = results[0];
-			res.redirect("/user/myaccount.html")  	
+			// res.redirect("/user/myaccount.html") 
+			res.json(common.resjson(200, "登录成功",{})) 
 		}else{
-	  		res.redirect("/signin.html")  
+	  		// res.redirect("/signin.html") 
+	  		res.json(common.resjson(400, "用户名或密码错误",{})) 
 	  	}
 	  }else{
-	  	res.redirect("/signin.html")
+	  	// res.redirect("/signin.html")
+	  	res.json(common.resjson(400, "用户名或密码错误",{}))
 	  }
 	});
 
@@ -417,8 +420,9 @@ exports.signup = function(req, res) {
 	  }
 	  if(results){
 	  	if(results[0].value > 0){
-	  		res.redirect("/signup.html")
-	  		console.log("该用户已经注册")
+	  		// res.redirect("/signup.html")
+	  		// console.log("该用户已经注册")
+	  		res.json(common.resjson(400, "用户已经注册",{}))
 	  	}else{
 	  		client.query('INSERT INTO '+TEST_TABLE +"(member_code,member_name,cell_phone,email,pay_password,login_password,id,create_time,balance,status,is_deleted,weixin) VALUES ('"+_user.username+"', '','','','','"+password+"', "+create_time+", '"+create_time+"', 0,0,0,'')",function selectCb(err, results, fields){  
 			    if (err) {
@@ -432,7 +436,8 @@ exports.signup = function(req, res) {
 						}
 					  	if(results){
 				  			req.session.user = results[0];
-							res.redirect("/user/myaccount.html")
+							// res.redirect("/user/myaccount.html")
+							res.json(common.resjson(200, "注册成功",{}))
 				  		}
 					});
 			    }   
