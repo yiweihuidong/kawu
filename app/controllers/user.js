@@ -5,7 +5,7 @@ var TEST_TABLE = 'tbl_member_info';
 var CARDS_TYPE = 'tbl_card_info'; 
 var mysqlmsg = {
 	user: 'root',  
-  	password: 'yiweihuidong',  
+  	password: '12345678',  
 }
 //md5
 var crypto = require('crypto');
@@ -104,6 +104,47 @@ exports.sellCards = function(req, res) {
 	});
 	// client.end();
 }
+exports.cardsRecovery = function(req, res) {
+	var client = mysql.createConnection(mysqlmsg);
+	client.connect();
+	client.query("use " + TEST_DATABASE);
+	client.query("select name,code from tbl_sys_codes where type='CARD_TYPE'", function(err, results, fields) {
+	  if(err){
+	  	console.log(err)
+	  }
+	  if(results){
+	  	var cards = results;
+	  	client.query("select card_name,card_desc,id,logo_url,card_type from tbl_card_info", function(err, results, fields) {
+		  if(err){
+		  	console.log(err)
+		  }
+		  if(results){
+		  	var cardstypes = results;
+			client.query("select bid_price,card_id,face_value,img_url from tbl_card_price", function(err, results, fields) {
+			  if(err){
+			  	console.log(err)
+			  }
+			  if(results){
+			  	var cardsprice = results;
+			  	// cardstypes[0].cardsprice = cardsprice;
+			  	// cards[0].cardstypes = cardstypes;
+			  	console.log(cardstypes.cardsprice)
+	  			console.log(cards);
+			  	res.render('admin/cardsRecovery',{
+					title: '我要卖卡',
+					cards: cards,
+					cardstypes: cardstypes,
+					cardsprice: cardsprice
+				});
+			  }
+			});
+		  }
+		});
+	  }
+	});
+	// client.end();
+}
+
 exports.cards = function(req, res) {
 	var cards = req.body;
 	console.log(cards)
@@ -165,13 +206,13 @@ exports.sellCardsPost = function(req, res){
 		var client = mysql.createConnection(mysqlmsg);
 		client.connect();
 		client.query("use " + TEST_DATABASE);
-		client.query('INSERT INTO tbl_order_detail (bid_price,card_id,card_name,card_no,card_password,face_value,id,order_code) VALUES ("'+sellmsg.bid_price+','+sellmsg.card_id+','+sellmsg.card_name+','+sellmsg.card_no+','+sellmsg.card_password+','+sellmsg.face_value+','+sellmsg.id+','+sellmsg.order_code+'")',function selectCb(err, results, fields){  
+		client.query('INSERT INTO tbl_order_detail (bid_price,card_id,card_name,card_no,card_password,face_value,id,order_code) VALUES ('+sellmsg.bid_price+','+sellmsg.card_id+','+sellmsg.card_name+','+sellmsg.card_no+','+sellmsg.card_password+','+sellmsg.face_value+','+sellmsg.id+','+sellmsg.order_code+')',function selectCb(err, results, fields){
 		    if (err) {
 		    	res.json(common.resjson(400, "未知错误",{}))
 				console.log(err)
 		    }
 		    if(results){
-				res.json(common.resjson(200, "获取成功",results))
+				res.json(common.resjson(200, "获取成功",{}))
 		  		console.log(results)
 		    }   
 		    client.end();  

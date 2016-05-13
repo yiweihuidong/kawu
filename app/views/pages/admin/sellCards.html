@@ -319,9 +319,9 @@
 	function ceshi() {
 		alert(1)
 		var data = {
-			cardstype: $("#card-btoc>li.active>a").attr("val")
+			cardsid: $("#card-btoc>li.active>a").attr("val")
 		};
-		sajax("/cardstype","post",data,function(data){
+		sajax("/cardsid","post",data,function(data){
 			alert(JSON.stringify(data))
 		});
 //		var json = JSON.stringify({

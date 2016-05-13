@@ -10,15 +10,15 @@
 div.h-left {
     float: left;
 }
-/*div.h-left > i {*/
-    /*display: inline-block;*/
-    /*width: 12px;*/
-    /*height: 16px;*/
-    /*background: url('../img/1.png') no-repeat -37px -12px;*/
-    /*float: left;*/
-    /*margin-top: 7px;*/
-    /*margin-left: 20px;*/
-/*}*/
+div.h-left > i {
+    display: inline-block;
+    width: 12px;
+    height: 16px;
+    background: url('../img/1.png') no-repeat -37px -12px;
+    float: left;
+    margin-left: 21px;
+    margin-top: 7px;
+}
 div.h-left > span {
     margin-left: 9px;
     margin-right: 17px;
@@ -40,13 +40,13 @@ div.h-left > .drop {
 ul.h-right {
     float: right;
 }
-/*ul.h-right > li > b {*/
-    /*display: inline-block;*/
-    /*width: 9px;*/
-    /*height: 17px;*/
-    /*background: url('../img/1.png') no-repeat -12px -11px;*/
-    /*margin-top: 6px;*/
-/*}*/
+ul.h-right > li > b {
+    display: inline-block;
+    width: 9px;
+    height: 17px;
+    background: url('../img/1.png') no-repeat -12px -11px;
+    margin-top: 6px;
+}
 
 ul.h-right > li {
     float: left;
@@ -59,30 +59,25 @@ ul.h-right > li {
 /*导航*/
 .nav {
     background-color: #fff;
-
+    border-bottom:1px solid RGB(250,94,14);
 }
 .nav-box {
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding-top: 12.5px;
+    padding-bottom: 12.5px;
     overflow: hidden;
 }
-
-.nav > .nav-box > img.logo {
+.nav > .nav-box > a>img.logo {
     float: left;
-
 }
-
 .nav ul.nav-right {
     float: right;
     margin-top:15px;
 }
-
 .nav ul.nav-right > li {
     float: left;
     margin-left: 24px;
     line-height:25px;
 }
-
 .nav-box > ul > li > span {
     display: inline-block;
     background-image: url('../img/3.png');
@@ -95,30 +90,30 @@ ul.h-right > li {
     color:#bbb;
 }
 .nav-box > ul > li > span.honor {
-    width:25px;
-    height:25px;
-    background-position: 0 1px;
-    background-size:105px 25px
+    width:20px;
+    height:35px;
+    background-position: -3px -9px;
+    background-size:100px;
 }
 .nav-box > ul > li > span.safety {
-    width: 25px;
-    height: 25px;
-    background-position: -21px 1px;
-    background-size:105px 25px;
+    width: 20px;
+    height: 35px;
+    background-position: -25px -9px;
+    background-size:100px;
 }
 
 .nav-box > ul > li > span.service {
-    width: 25px;
-    height: 25px;
-    background-position: -43px 1px;
-    background-size:105px 25px;
+    width: 20px;
+    height: 35px;
+    background-position: -50px -9px;
+    background-size:100px;
 }
 
 .nav-box > ul > li > span.sale {
-    width: 25px;
-    height: 25px;
-    background-position: -66px 1px;
-    background-size:105px 25px;
+    width: 20px;
+    height: 35px;
+    background-position: -73px -9px;
+    background-size:100px;
 }
 
 /*banner*/
@@ -139,7 +134,7 @@ ul.h-right > li {
     float: left;
     width: 20%;
 }
-.section .hot-store li.store-pic >img{
+.section .hot-store li.store-pic >a>img{
         width: 90%;
         min-width:90%;
 }
@@ -171,9 +166,14 @@ ul.h-right > li {
     width: 96%;
 }
 /*用户品评价部分*/
-.section .user {
-    clear: both;
-}
+.user-eval>.index-title
+{font-size: 20px;
+ color: #fff;
+ margin: 0 0;
+ text-align: center;
+ line-height: 4;
+ font-weight: bold;
+    }
 /*资质认证支付安全等*/
 .section .pay {
     background-color: RGB(245, 245, 245);
@@ -218,28 +218,28 @@ ul.h-right > li {
 .section .pay .pay-f > i.honor {
     width: 56px;
     height: 56px;
-    background-position: 1px -3px;
-    background-size:231px 56px;
+    background-position: 2px -14px;
+    background-size:200px;
 }
 
 .section .pay .pay-f > i.safety {
     width: 48px;
     height: 57px;
-    background-position: -50px -3px;
-    background-size:231px 56px;
+    background-position: -48px -14px;
+    background-size:200px;
 }
 
 .section .pay .pay-f > i.service {
-    width: 60px;
+    width: 57px;
     height: 57px;
-    background-position: -95px -3px;
-    background-size:231px 56px;
+    background-position: -89px -14px;
+    background-size:200px;
 }
 .section .pay .pay-f > i.sale {
     width: 57px;
     height: 57px;
-    background-position: -150px -3px;
-    background-size:231px 56px;
+    background-position: -150px -14px;
+    background-size:200px;
 }
 
 /*页脚*/

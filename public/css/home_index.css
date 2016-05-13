@@ -1,0 +1,95 @@
+@charset "utf-8";
+body{background: #f5f5f5;}
+.indexBorderB{border-bottom: 1px solid #dfdfdf;}
+.index-fo-info h3,.index-fo-info span,.index-fo-link h5,.index-fo-link a,.link-th h3,
+.link-th span,.menuLi h3,.menuLi > p,.indexPublicClass .z2 .btn,.kfwHot h4,.kfwHot p{line-height: 1;}
+.index-fo-info i,.link-weixi i,.posit i,.z2 i,.kfwHot i,.s-uebut i{background: url("../img/usr/index.png") no-repeat scroll left 0;display: inline-block;}
+.link-th span,.link-th h3,.link-th h5,.index-fo-link h5,.index-fo-info li,
+.usere-text p,.z2 h3,.z1 .indexEnd,.kfwHot h4{color: #575757;}
+.index-fo-info li,.index-fo-link li,.entrship li,.indexPublicClass li,
+.indexPublicClass li > a,.kfwHot li{float: left;}
+.index_title{font-size: 20px;color: #575757;margin: 40px 0;text-align: center;line-height: 1;font-weight: bold;}
+.indexPublicClass li,.kfwHot li{margin: 0 0 0 20px;}
+.indexPublicClass .iactive,.kfwHot .iactive{margin-left:0;}
+.kfwHot i,.kfwHot h4,.kfwHot span,.kfwHot h5,.kfwHot div,.kfwHot p{position: absolute;left: 0;}
+.kfwHot h4,.kfwHot span,.kfwHot h5,.kfwHot p{width: 220px;}
+/***热门推荐***/
+.kfwHot li{width: 220px;height: 310px;background: #ffffff;text-align: center;position: relative;cursor: text;}
+.kfwHot li a{display: block;width: 220px;height: 310px;}
+.kfwHot i{display: block;width: 80px;height: 80px;line-height: 80px;text-align: center;background-position: 0 -717px;margin: 0 auto;top: 40px;left: 50%;margin-left: -40px;}
+.kfwHot h4{top: 150px;font-size: 18px;font-weight: normal;}
+.kfwHot span{top: 175px;font-size: 12px;color: #b0b0b0;}
+.kfwHot h5{top: 238px;font-size: 18px;color: #fd5a66;font-weight: normal;}
+.kfwHot div{top: 310px;display: inline-block;width: 100px;left: 50%;margin-left: -50px;padding: 7px 0;color: #ffffff;background: #fd5a66;font-size: 12px;}
+.kfwHot div:hover{background: #cd4958;}
+.kfwHot p{top: 323px;font-size: 12px;color: #cbcbcb;}
+.kfwHot p em{color: #ffa9af;}
+.kfwHot i,.kfwHot h4,.kfwHot span,.kfwHot h5,.kfwHot div,.kfwHot p{-webkit-transition: top 0.2s;-moz-transition: top 0.2s;-ms-transition: top 0.2s;-o-transition: top 0.2s;transition: top 0.2s;}
+.kfwHot li:hover i{top:30px;}
+.kfwHot li:hover h4{top:130px;}
+.kfwHot li:hover span{top:157px;}
+.kfwHot li:hover h5{top:190px;}
+.kfwHot li:hover div{top:240px;}
+.kfwHot li:hover p{top:280px;}
+.kfwHot img{vertical-align: middle}
+/***创业公开课***/
+.indexTab > ul{margin: 0 auto;}
+.indexPublicClass ul,.indexPublicClass li{height: 420px;}
+.indexPublicClass li,.z{width: 280px;}
+.indexPublicClass ul {border-bottom: medium none;}
+.indexPublicClass li{cursor: text;border: 1px solid #dddddd;overflow: hidden;position: relative;}
+.indexPublicClass .iactive{margin-left:0;}
+.z{position: absolute;}
+.z1{height: 118px;z-index: 2;}
+.tabs li a{padding: 12px 24px 14px;}
+.z2{top: 0;-webkit-transition: top 0.2s;-moz-transition: top 0.2s;-ms-transition: top 0.2s;-o-transition: top 0.2s;transition: top 0.2s;}
+.z1 span{display: inline-block;width: 80px;height: 20px;background: #eb5767;line-height: 20px;text-align: center;font-size: 12px;color:#ffffff;margin: 10px 0 0 10px;}
+.z1 .indexEnd{background: #ffffff;}
+.z1 h4{font-size: 72px;color: #ffffff;line-height: 1;margin-top: 18px;text-align: center;}
+.z1 h4 em{font-size: 18px;color: #ffffff;position: relative;left: 5px;top: -36px;}
+.z2 h3{font-size: 14px;font-weight: normal;margin: 21px 20px 26px 20px;line-height: 1.6;height: 46px;overflow: hidden;}
+.z2 h3 a{border: none;padding: 0;line-height: 1.5}
+.z2 h3 a:hover{border: none;}
+.z2 div{margin: 0 20px;}
+.z2 span{color: #b0b0b0;font-size: 12px;height: 13px;line-height: 13px;position: relative;text-align: left;}
+.z2 span.floatLeft{text-indent: 18px;} 
+.z2 span.floatRight{text-indent: 15px;}
+.z2 i{margin-right: 5px;position: absolute;left: 0;}
+.z2 .iTime{width: 13px;height: 13px;background-position: 0 -639px;}
+.z2 .iAdd{width: 10px;height: 13px;background-position: 0 -670px;}
+.indexPublicClass .z2 .btn,.indexPublicClass .z2 .btn:hover{padding: 9px 0;border: none;font-size: 14px;color: #ffffff;}
+.indexPublicClass .z2 .btn{width: 240px;background: #00c9ff;margin-left: 20px;display: none;float: left;-webkit-transition: top 0.3s;-moz-transition: top 0.3s;-ms-transition: top 0.3s;-o-transition: top 0.3s;transition: top 0.3s;}
+.indexPublicClass .z2 .btn:hover{background: #00aad7;}
+.indexPublicClass li:hover .z2{top: -38px;}
+.indexPublicClass li:hover .z2 .btn{display: block;top: 38px;}
+.tabs .publicClassUl{width: auto;margin: 40px auto;}
+/***用户评价***/
+.userEval{height: 500px;background: url("../img/usr/usr.jpg") no-repeat scroll center center;}
+.userEval .index_title,.menuLi > p,.menuLi h3{color: #ffffff;}
+.user-eval{height: 500px;position: relative;}
+.user-eval li{float: left;}
+.user-eval .ueInfo{padding: 13px 78px 26px 97px;width: 740px;height: 88px;margin: 0 auto;background: url("../img/usr/comment.png") no-repeat scroll center center;position: relative;}
+.ueInfo li{width: 546px;height: 44px;line-height: 1.7;font-size: 14px;color: #575757;overflow: hidden;}
+.ueInfo li{position: absolute;display: none;top:35px;left:190px;}
+.ueImgDiv{width: 200px;margin: 30px auto 22px auto;overflow: hidden;}
+.ueImgDiv ul{width: 1000px;position: relative;}
+.ueImg li{width: 200px;text-align: center;}
+.user-eval .ueName,.ueName li{height: 90px;width: 740px;}
+.user-eval .ueName{margin: 0 auto;position: relative;}
+.ueName li{position: absolute;text-align: center;display: none;}
+.ueName h4{font-size: 18px;line-height: 1;color: #ffffff;font-weight: normal;}
+.ueName span{display: inline-block;font-size: 12px;line-height: 1.8;color: #ffffff;width: 100%;}
+.ueBut{width: 100px;margin: 0 auto;}
+.ueBut li{margin-right: 10px;width: 10px;height: 10px;background: #000000 none repeat scroll 0 0;cursor: pointer;opacity: 0.33;filter:alpha(opacity=33);text-align: center;-webkit-border-radius: 50%;-moz-border-radius: 50%;-ms-border-radius: 50%;-o-border-radius: 50%;border-radius: 50%;}
+.ueBut .active{background: #ffffff;opacity: 1;filter:alpha(opacity=100);}
+.user-eval .s-uebut{position: absolute;top: 50%;margin-top: -30px;height: 60px;width: 40px;background: url("../img/usr/posit.png") repeat scroll center center;cursor: pointer;}
+.user-eval .uebutLe{left: 60px;}
+.user-eval .uebutRi{right: 60px;}
+.s-uebut i{width: 17px;height: 30px;position: absolute;top: 50%;left: 50%;margin-left: -8.5px;margin-top: -15px;display: block;}
+.uebutLe i{background-position: -3px -506px;}
+.uebutRi i{background-position: -4px -584px;}
+.imgW120{
+    width:120px;
+    height:120px;
+    border-radius: 50%;
+}

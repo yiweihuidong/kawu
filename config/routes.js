@@ -19,7 +19,7 @@ module.exports = function(app) {
 	app.get(/user/,User.check)
 
 	//public
-	app.get('/imgcode',Public.imgcode)
+	//app.get('/imgcode',Public.imgcode)
 
 	//index
 	app.get('/',Index.index);
@@ -27,8 +27,9 @@ module.exports = function(app) {
 	app.get('/recovery.html',Index.recovery)
 	app.get('/signin.html',Index.signin)
 	app.get('/signup.html',Index.signup)
-
-	//user
+	//app.get('/sellCards.html',Index.sellCards)
+	//app.get('/usr/cardsRecovery.html',Index.cardsRecovery)
+	//usr
 	app.get('/user/myaccount.html',User.myAccount)
 	app.get('/user/mydatum.html',User.myDatum)
 	app.get('/user/sellcards.html',User.sellCards)
@@ -38,7 +39,8 @@ module.exports = function(app) {
 	app.get('/user/setphone.html',User.setPhone)
 	app.get('/user/myorder.html',User.myOrder)
 	app.get('/user/selldetail.html',User.sellDetail)
-	//user sellcards
+	app.get('/user/cardsRecovery.html',User.cardsRecovery)
+	//usr sellcards
 	app.post('/cardstype',User.cards)
 	app.post('/cardsid',User.id)
 	app.post('/sellCardsPost',User.sellCardsPost)
