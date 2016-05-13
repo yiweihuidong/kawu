@@ -1,0 +1,523 @@
+<%- include ../../includes/head.html %>
+<%- include ../../includes/header.html %>
+<body>
+<div class="tip" id="eytip" style="display: none; left: 1172.5px; top: 72px;"><i id="tip-arrow"
+                                                                                 class="tip-arrow tip-arrow-top"></i>
+
+    <div class="tip-cont" id="tip-cont">分享到豆瓣网</div>
+</div>
+<div class="content">
+    <!--<div class="subnav">-->
+    <!--<div class="container">-->
+    <!--<ul class="subnav-tabs clearfix">-->
+    <!--<li><a href="http://www.lipin.com/list-desciption.html">卡券介绍说明</a></li>-->
+    <!--<li><a href="http://www.lipin.com/list-getting.html">卡券获取(购买)</a></li>-->
+    <!--<li><a href="http://www.lipin.com/list-binding.html">卡券绑定(使用) </a></li>-->
+    <!--<li><a href="http://www.lipin.com/list-amount.html">卡券查询余额</a></li>-->
+    <!--<li class="active"><a href="http://www.lipin.com/list-recovery.html">卡券回收</a></li>-->
+    <!--<li><a href="http://www.lipin.com/list-article.html">业内新闻</a></li>-->
+    <!--</ul>-->
+    <!--</div>-->
+    <!--</div>-->
+    <div class="max-breadcrumbs clearfix">
+        <div class="container">
+            <div class="bdsharebuttonbox pr0 pull-right bdshare-button-style0-24" data-bd-bind="1462850095737"><a
+                    href="http://www.lipin.com/jingdongeka.html#" class="bds_sqq" data-cmd="sqq" tip="分享到QQ好友"
+                    title="分享到QQ好友"></a><a href="http://www.lipin.com/jingdongeka.html#" class="bds_qzone"
+                                           data-cmd="qzone" tip="分享到QQ空间" title="分享到QQ空间"></a><a
+                    href="http://www.lipin.com/jingdongeka.html#" class="bds_weixin" data-cmd="weixin" tip="分享到微信"
+                    title="分享到微信"></a><a href="http://www.lipin.com/jingdongeka.html#" class="bds_tsina"
+                                         data-cmd="tsina" tip="分享到新浪微博" title="分享到新浪微博"></a><a
+                    href="http://www.lipin.com/jingdongeka.html#" class="bds_tqq" data-cmd="tqq" tip="分享到腾讯微博"
+                    title="分享到腾讯微博"></a><a href="http://www.lipin.com/jingdongeka.html#" class="bds_douban"
+                                           data-cmd="douban" tip="分享到豆瓣网" title="分享到豆瓣网"></a><a
+                    href="http://www.lipin.com/jingdongeka.html#" class="bds_copy" data-cmd="copy" tip="分享到复制网址"
+                    title="分享到复制网址"></a><a href="http://www.lipin.com/jingdongeka.html#" class="bds_more"
+                                           data-cmd="more"></a></div>
+            <script>window._bd_share_config = {
+                "common": {
+                    "bdSnsKey": {},
+                    "bdText": "",
+                    "bdMini": "2",
+                    "bdMiniList": false,
+                    "bdPic": "",
+                    "bdStyle": "0",
+                    "bdSize": "24"
+                }, "share": {}
+            };
+            with (document)0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];</script>
+            <div class="breadcrumbs"><a href="/index.html">首页</a>
+                   <em class="sep">/</em><span class="cardKind-title">京东E卡回收</span>
+            </div>
+        </div>
+    </div>
+    <div class="bggray py25" ng-app="M1" ng-controller="ctr">
+        <div class="container">
+            <div class="box article clearfix">
+                <div class="article-aside">
+                    <div class="article-menu"><h4>卡券回收分类</h4>
+                        <div class="ifold iunfold">
+                            <!--标题cards-->
+                            <!--<h5 class="ifold-menu">-->
+                                <!--<a>-->
+                                <!--<i class="iconfont"></i>-->
+                                   <!--电商卡回收-->
+                                    <!--<s></s>-->
+                                <!--</a>-->
+                            <!--</h5>-->
+                            <!-- 卡片分类cardstype-->
+                            <!--<div class="ifold-body">-->
+                                <!--<ul id="card_kind" class="article-submenu clearfix">-->
+                                    <!--<li><a>京东E卡</a></li>-->
+                                    <!--<li><a>亚马逊礼品卡</a></li>-->
+                                    <!--<li><a>1号店礼品卡</a></li>-->
+                                    <!--<li><a>当当网礼品卡</a></li>-->
+                                    <!--<li><a>苏宁易购卡</a></li>-->
+                                <!--</ul>-->
+                            <!--</div>-->
+                        </div>
+                    </div>
+                </div>
+                <div class="article-main recovery-main">
+                    <div class="recovery-title"><p class="text-orange"><a
+                            href="#">京东E卡介绍说明</a><span class="sep">|</span><a
+                            href="#">查询余额</a><span class="sep">|</span><a
+                            href="#">获取(购买)</a><span class="sep">|</span><a
+                            href="#">绑定(使用)</a></p>
+                        <h2 class="text-red cardKind-title">京东e卡回收</h2>
+                    </div>
+
+                    <div class="recycle-loading" style="display: none;"><i class="iconimg icon-loading"></i>回收表单加载中，请稍候...
+                    </div>
+                    <div class="recycle-form hide" style="display: block;">
+                        <form method="post" id="sell">
+                            <div class="form-group" id="card-facevalue-wrapper">
+                                <div class="col-xs-1">
+                                    <label class="control-label">选择面值：</label>
+                                </div>
+                                <div class="col-xs-11">
+                                    <ul class="btn-group btn-group-price" id="card-facevalue">
+                                        <!--<li>-->
+                                            <!--<a class="btn" href="javascript:;" onclick="pselect(this,1000);"-->
+                                               <!--val="12">-->
+                                                <!--&lt;!&ndash;¥1000.0&ndash;&gt;-->
+                                                <!--{{p.face_value}}-->
+                                                <!--<small>-->
+                                                    <!--&lt;!&ndash;/ ¥940.0(回收价)&ndash;&gt;-->
+                                                    <!--{{p.bid_price}}-->
+                                                <!--</small>-->
+                                                <!--<b></b>-->
+                                            <!--</a>-->
+                                        <!--</li>-->
+                                    </ul>
+                                </div>
+                            </div>
+                            <script>
+                                //卡类和卡种
+                                cards = <%- JSON.stringify(eval(cards)) %>;
+                                cardstypes = <%- JSON.stringify(eval(cardstypes)) %>;
+                                // console.log(cardstypes);
+                                cardsprice=<%- JSON.stringify(eval(cardsprice))%>;
+                                //console.log(cards);
+                                //卡种
+                                for(var i= 0,codes=[],names=[];i<cards.length;i++){
+                                    codes.push(cards[i].code);
+                                    names.push(cards[i].name);
+                                    var c=$('<h5 val='+i+' class="ifold-menu"><a class="cards"><i class="iconfont"></i>'+cards[i].name+'<s></s></a></h5>');
+                                    $("div.iunfold").append(c);
+                                }
+                                //卡类
+                                for(var i= 0,ids=[],cardNames=[],li=[];i<cardstypes.length;i++){
+                                    ids.push(cardstypes[i].id);
+                                    cardNames.push(cardstypes[i].card_name);
+                                    li.push($('<li val='+i+'><a class="cardType">'+cardstypes[i].card_name+'</a></li>'));
+                                }
+                                var div=$('<div class="ifold-body"></div>');
+                                var ul=$('<ul id="card_kind" class="article-submenu clearfix"></ul>');
+                                for(var i=0;i< li.length;i++){
+                                    var type=$(ul).append(li);}
+                                $("h5[val='0']").after(div.append(type));
+                                //价格
+                                for(var i= 0,values=[],prices=[];i<cardsprice.length;i++){
+                                    values.push(cardsprice[i].face_value);
+                                    prices.push(cardsprice[i].bid_price);
+                                    var li=$('<li><a class="btn" >'+cardsprice[i].face_value+'<small>/'+cardsprice[i].bid_price+'</small><b></b></a></li>');
+                                    $("#card-facevalue").append(li);
+                                }
+                                $(".cards").click(function(e){
+                                    var i=$(e.target).parent("h5").attr("val");
+                                    console.log(i);
+                                    var data = {
+                                        cardstype:codes[i]
+                                    }
+                                    console.log(data.cardstype);
+                                    sajax("/cardstype", "post", data, function (data) {
+                                        cardstypes =eval(JSON.stringify(data.data.cardstypes));
+                                        //卡类
+                                        $(".ifold-body").remove();
+                                        for(var i= 0,ids=[],cardNames=[],li=[];i<cardstypes.length;i++){
+                                            ids.push(cardstypes[i].id);
+                                            cardNames.push(cardstypes[i].card_name);
+                                            li.push($('<li val='+i+'><a class="cardType">'+cardstypes[i].card_name+'</a></li>'));
+                                        }
+                                        var div=$('<div class="ifold-body"></div>');
+                                        var ul=$('<ul id="card_kind" class="article-submenu clearfix"></ul>');
+                                        for(var i=0;i< li.length;i++){
+                                            var type=$(ul).append(li);}
+                                        $("h5[val='0']").after(div.append(type));
+                                        cardsprice=eval(JSON.stringify(data.data.cardsprice));
+                                        console.log( cardsprice);
+                                        //价格
+                                        $("#card-facevalue>li").remove();
+                                        for(var i= 0,values=[],prices=[];i<cardsprice.length;i++){
+                                            values.push(cardsprice[i].face_value);
+                                            prices.push(cardsprice[i].bid_price);
+                                            var li=$('<li><a class="btn" >'+cardsprice[i].face_value+'<small>/'+cardsprice[i].bid_price+'</small><b></b></a></li>');
+                                            $("#card-facevalue").append(li);
+                                        }
+                                    });
+                                });
+                                $(".cardType").click(function(e){
+                                    var i=$(e.target).parent("li").attr("val");
+                                    var data = {
+                                        cardsid: ids[i]
+                                    }
+                                    //console.log(data.cardsid);
+                                    sajax("/cardsid", "post", data, function (data) {
+                                        cardsprice=eval(JSON.stringify(data.data));
+                                        console.log(cardsprice);
+                                        $("#card-facevalue>li").remove();
+                                        for(var i= 0,values=[],prices=[];i<cardsprice.length;i++){
+                                            values.push(cardsprice[i].face_value);
+                                            prices.push(cardsprice[i].bid_price);
+                                            var li=$('<li><a class="btn" ><small>'+cardsprice[i].bid_price+'</small><b></b></a></li>');
+                                            $("#card-facevalue").append(li);
+                                        }
+                                    } );
+                                });
+                                function tijiao() {
+                                    var data = {
+                                        bid_price: 1,//回收价
+                                        card_id: 2,//卡类型id
+                                        card_name: 3,//卡片名称
+                                        card_no: 4,//卡片
+                                        card_password: 5,//卡密码
+                                        face_value: 6,//面值
+                                        id: 7,//id
+                                        order_code: 8//订单编号
+                                    }
+                                    sajax("/sellCardsPost", "post", data, function (data) {
+                                        alert(JSON.stringify(data));
+                                    });
+                                }
+                            </script>
+                            <script>
+                                //面包屑
+                                var url=window.location.href;
+                                var need=url.slice(url.indexOf("?")+1);
+                                var arr =need.split("&");
+                                var cardstype=arr[0].slice(arr[0].indexOf("=")+1);
+                                var cardsname=arr[1].slice(arr[1].indexOf("=")+1);
+                                switch(cardsname){
+                                    case "jd": $("#card_kind>li:nth-child(1)").addClass("active");
+                                        $(".cardKind-title").text("京东E卡回收");
+                                        break;
+                                    case "ymx":$("#card_kind>li:nth-child(2)").addClass("active");
+                                        $(".cardKind-title").text("亚马逊礼品卡回收");
+                                        break;
+                                    case "yhd":$("#card_kind>li:nth-child(3)").addClass("active");
+                                        $(".cardKind-title").text("1号店礼品卡回收");
+                                        break;
+                                    case "dd":$("#card_kind>li:nth-child(4)").addClass("active");
+                                        $(".cardKind-title").text("当当网礼品卡回收");
+                                        break;
+                                    case "sn":$("#card_kind>li:nth-child(5)").addClass("active");
+                                        $(".cardKind-title").text("苏宁易购卡");
+                                        break;
+                                    default:$(".card_kind>li:nth-child(1)").addClass("active");
+                                    // $("cardKind-title").text("京东E卡回收");
+                                }
+                                $("#card_kind").click(function(e){
+                                    $(e.target).parent("li").siblings().removeClass("active");
+                                    $(e.target).parent("li") .addClass("active");
+                                    $(".cardKind-title").text($(e.target).text());
+                                    return false;
+                                });
+                                $("#card-facevalue").click(function(e){
+                                    $(e.target).parent("li").siblings().removeClass("active");
+                                    $(e.target).parent("li") .addClass("active");
+                                    return false;
+                                });
+                            </script>
+                            <hr>
+                            <div class="form-group" id="batch">
+                                <div class="col-xs-1">
+                                    <label class="control-label">选择数量：</label>
+                                </div>
+                                <div class="col-xs-11">
+                                    <ul class="btn-group btn-group-card btn-group-units" id="card-species">
+                                        <li id="units1"
+                                            onclick="setTab(&#39;units&#39;,1,2);$(&#39;#type&#39;).val(0);"
+                                            class="active">
+                                            <a class="btn btn-outline" href="javascript:;">
+                                                <i class="iconfont icon-single"></i>
+                                                单张回收
+                                                <b></b>
+                                            </a>
+                                        </li>
+                                        <li id="units2"
+                                            onclick="setTab(&#39;units&#39;,2,2);$(&#39;#type&#39;).val(1);">
+                                            <a class="btn btn-outline" href="javascript:;">
+                                                <i class="iconfont icon-batch"></i>
+                                                批量回收
+                                                <b></b>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div id="con_units_1">
+                                <div class="form-group">
+                                    <div class="col-xs-1">
+                                        <label class="control-label">输入卡号：</label>
+                                    </div>
+                                    <div class="col-xs-5">
+                                        <div class="mr30">
+                                            <input class="form-control" name="cardid[]" type="text"
+                                                   placeholder="输入卡号"></div>
+                                    </div>
+                                    <div class="col-xs-1">
+                                        <label class="control-label">输入密码：</label>
+                                    </div>
+                                    <div class="col-xs-5">
+                                        <div class="mr30">
+                                            <input class="form-control" name="cardpsw[]" type="text"
+                                                   placeholder="请输入密码" reg="^[A-Za-z0-9_-]{4,30}$" null="必须输入卡密">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group hide" id="sell-passcode" style="display: none;">
+                                    <div class="col-xs-1">
+                                        <label class="control-label">卡验证码：</label>
+                                    </div>
+                                    <div class="col-xs-3">
+                                        <input class="form-control" name="cardcode[]" type="text"
+                                               placeholder="请输入验证码" maxlength="4"></div>
+                                </div>
+                            </div>
+                            <div class="form-group hide" id="con_units_2">
+                                <div class="col-xs-1">
+                                    <label class="control-label">卡号/密码：</label>
+                                </div>
+                                <div class="col-xs-11">
+                                    <p class="help-block text-danger textarea-hint">
+                                        卡号与密码之间请用 <strong>“空格”</strong>
+                                        隔开！
+                                    </p>
+
+                                    <div class="textarea-wrapper">
+                                            <textarea class="form-control" name="cardlist" id="cardlist"
+                                                      onkeydown="cardnum(this,event)"></textarea>
+
+                                        <div class="textarea-tips-wrapper">
+                                            <ul class="textarea-tips" id="card-tips"></ul>
+                                        </div>
+                                    </div>
+                                    <p class="help-block">
+                                        已经输入
+                                        <strong id="cardnum" class="text-red">0</strong>
+                                        张面值
+                                        <strong class="text-red"><strong id="cardmz">100</strong>
+                                            元</strong>
+                                        的卡，每次最多可提交100张
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="form-group fast-deal">
+                                <div class="col-xs-11 col-xs-offset-1">
+                                    <label class="checkbox" for="urgent">
+                                        <input type="checkbox" id="urgent">
+                                        我要加急处理
+                                        <span class="gray">(9:00-18:00)</span>
+                                        <span class="text-red fn-hide" id="urgent-money">（手续费:3%）</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-xs-11 col-xs-offset-1">
+                                    <input type="hidden" name="urgent" value="0">
+                                    <input type="hidden" name="type" id="type" value="0">
+                                    <input type="hidden" name="cardtype[]" id="cardtype" value="2">
+                                    <input type="hidden" name="cardprice[]" id="cardprice" value="0">
+                                    <input type="hidden" name="refer" value="account.html">
+                                    <input type="hidden" name="formhash" value="3f959c23">
+                                    <input class="btn btn-green btn-lg pull-left" type="button" id="sellbutton"
+                                           name="sell" value="确认提交卖卡" onclick="tijiao();">
+
+                                    <p class="pt10 pl20 fsz20 text-red pull-left" id="cardnote">卡号可以随意填，卡密一定要正确</p>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div id="carddiy" class="modal hide" style="width: 240px">
+                        <div class="cardprice-modal">
+                            <div class="form-group">
+                                <div class="mr4"><input class="form-control" name="cardprice" type="text"
+                                                        placeholder="请输入卡面值" maxlength="20"></div>
+                            </div>
+                            <div class="form-group">
+                                <button class="btn btn-primary btn-block" type="button" name="login-form"
+                                        onclick="idiyselect();">确 定
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+<!--<div>-->
+                    <!--<div class="recovery-panel">-->
+                        <!--<div class="recovery-intro clearfix"><img class="img" src="/img/cardsRecovery/2.jpg" alt="">-->
+
+                            <!--<p>京东E卡是京东商城的单用途商业预付卡，仅能购买京东自营商品-->
+                                <!--（“自营商品”指在商品详情页明确标识为”商品从京东库房出库，由京东安排配送，且商品发票由京东提供”的商品，但出版物、虚拟产品、部分团购及抢购商品、投资金银类、夺宝岛和第三方卖家商品不在此内。）；-->
+                                <!--京东卡是多用途商业预付卡，可购买京东商城全场商品，暂不支持购买金银投资类商品，部分团购，虚拟商品（如手机充值卡等），和标有家电下乡或节能补贴字样的商品。-->
+                                <!--京东卡和京东E卡不能同时使用。</p></div>-->
+                    <!--</div>-->
+                    <!--<div class="recovery-panel recovery-hide"><img src="/img/cardsRecovery/2(1).jpg"-->
+                                                                   <!--alt=""></div>-->
+                    <!--<div class="recovery-panel recovery-hide">-->
+                        <!--<div style="text-align:center;">-->
+                            <!--<span style="line-height:1.5;color:#E53333;">京东e卡分为实体卡与电子卡两种，您可从实体卡背面刮开获取卡号和卡密或者购买电子卡直接获取卡号与卡密。</span>-->
+                        <!--</div>-->
+                    <!--</div>-->
+<!--</div>-->
+                </div>
+                <div class="news-aside recovery-aside hide">
+                    <div class="box">
+                        <div class="box-heading"><h5 class="box-title">二手卡回收业务</h5></div>
+                        <div class="box-body">
+                            <ul class="sixcard clearfix">
+                                <li><a class="bg-red" href="#"><span class="cardicon"><i
+                                        class="iconfont"></i></span>电商卡回收</a></li>
+                                <li><a class="bg-blue" href="#"><span class="cardicon"><i
+                                        class="iconfont"></i></span>游戏卡回收</a></li>
+                                <li><a class="bg-purple" href="#"><span
+                                        class="cardicon"><i class="iconfont"></i></span>话费卡回收</a></li>
+                                <li><a class="bg-green" href="#"><span class="cardicon"><i
+                                        class="iconfont"></i></span>旅游卡回收</a></li>
+                                <li><a class="bg-orange" href="#"><span class="cardicon"><i
+                                        class="iconfont"></i></span>商超卡回收</a></li>
+                                <li><a class="bg-brown" href="#"><span class="cardicon"><i
+                                        class="iconfont"></i></span>加油卡回收</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="recycle-stepflow">
+        <div class="stepflow border-top py60" id="stepflow">
+            <div class="container">
+                <div class="stepflow-item stepflow-item-netrade">
+                    <div class="cards-caption"><h2>线上回收交易步骤</h2></div>
+                    <div class="stepflow-group png">
+                        <ul class="clearfix">
+                            <li><i class="iconimg icon-sign"></i><span>注册帐号<br>登录帐户</span></li>
+                            <li><i class="iconimg icon-right png"></i></li>
+                            <li><i class="iconimg icon-ecard"></i><span>提交卡号密码<br>等待验卡</span></li>
+                            <li><i class="iconimg icon-right png"></i></li>
+                            <li><i class="iconimg icon-verify"></i><span>验卡成功<br>资金到帐</span></li>
+                            <li><i class="iconimg icon-right png"></i></li>
+                            <li><i class="iconimg icon-account"></i><span>帐户提现<br>交易成功</span></li>
+                        </ul>
+                    </div>
+                    <div class="alert alert-danger"><p>工作时间内提交，一般两个小时内处理完成（特殊情况除外）；非工作时间内，处理时间将延期到下一个工作时间</p></div>
+                </div>
+                <div class="stepflow-item stepflow-item-facetrade">
+                    <div class="cards-caption"><h2>线下当面交易步骤</h2></div>
+                    <div class="stepflow-group png">
+                        <ul class="clearfix">
+                            <li><i class="iconimg icon-gz"></i><span>广州市番禺区洛溪新城<br>吉祥北园D区南一街9幢</span></li>
+                            <li><i class="iconimg icon-plus png"></i></li>
+                            <li><i class="iconimg icon-sz"></i><span>深圳市宝安区石岩<br>街道塘头松白路鸿福</span></li>
+                            <li><i class="iconimg icon-plus png"></i></li>
+                            <li><i class="iconimg icon-bj"></i><span>北京市丰台区<br>大红门街道苗圃东里</span></li>
+                        </ul>
+                    </div>
+                    <div class="alert alert-danger"><p><span class="text">目前只支持：<strong
+                            class="text-red">广州</strong>、<strong class="text-red">深圳</strong>和<strong class="text-red">北京</strong>当面交易</span>。您可以到我们提供的地址，通过我们的客服电话：<strong
+                            class="text-red">400-6093-365</strong> 联系客服当面交易</p></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="recycle-faq">
+        <div class="faq border-top py80">
+            <div class="container">
+                <div class="cards-caption"><h2>二手卡回收常见问题</h2></div>
+                <div class="faq-group">
+                    <div class="faq-item"><h5 class="faq-tite"><a href="javascript:;"><strong>1、</strong>51卡务网支持回收的二手卡有哪些？<i
+                            class="iconimg"></i></a></h5>
+
+                        <div class="faq-cont"><p class="text-danger">
+                            <strong>51卡务网暂时只针对网站公布回收的二手卡进行回收处理，目前支持回收的卡有50种；</strong></p>
+
+                            <p>目前包括电商卡、商超卡、旅游卡、加油卡、游戏卡、话费卡6种。</p>
+
+                            <p>您可在二手卡回收提交页面查看，如果没有您想要提交的卡，您可以联系客服。</p>
+
+                            <p>后期我们会会逐步的发布更多的卡类回收，详情请参考网站公示。</p></div>
+                    </div>
+                    <div class="faq-item"><h5 class="faq-tite"><a class="text-danger"
+                                                                  href="javascript:;"><strong>2、</strong>游戏卡与话费卡必看问题！<i
+                            class="iconimg"></i></a></h5>
+
+                        <div class="faq-cont"><p>游戏卡为自动结算形式回收，用户提交订单后最快几分钟内即可收到回收款。</p>
+
+                            <p class="text-danger">
+                                请提交前<strong>认真核对</strong>选择的面额，如实际卡面额大于您选择的面额，<strong>高于部分不予退还！</strong></p>
+
+                            <p>
+                                <small class="text-muted">如：您选择10元面额但实际为30元卡，则系统认为提交面额为10元，高于10元部分不予退还。</small>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="faq-item"><h5 class="faq-tite"><a href="javascript:;"><strong>3、</strong>哪些二手卡卡不支持回收？<i
+                            class="iconimg"></i></a></h5>
+
+                        <div class="faq-cont"><p>凡是已使用的卡、偷盗卡、非正常渠道获得的卡以及网站上没有的卡种我们都不回收。</p></div>
+                    </div>
+                    <div class="faq-item"><h5 class="faq-tite"><a href="javascript:;"><strong>4、</strong>回收放款需要多少时间？<i
+                            class="iconimg"></i></a></h5>
+
+                        <div class="faq-cont"><p>工作时间内提交，一般两个小时内处理完成（特殊情况除外）；非工作时间内，处理时间将延期到下一个工作时间。</p></div>
+                    </div>
+                    <div class="faq-item"><h5 class="faq-tite"><a href="javascript:;"><strong>5、</strong>二手卡回收需要手续费么？<i
+                            class="iconimg"></i></a></h5>
+
+                        <div class="faq-cont"><p>您好，回收价格已经包含手续费，不会再收取任何形式的手续费（除了加急处理功能）。</p></div>
+                    </div>
+                    <div class="faq-item"><h5 class="faq-tite"><a href="javascript:;"><strong>6、</strong>电子卡与实体卡区别？<i
+                            class="iconimg"></i></a></h5>
+
+                        <div class="faq-cont"><p>实体卡是实物的，是一张卡片的形式，卡的背面有卡号和密码；</p>
+
+                            <p>电子卡是虚拟的，是通过网上在线购买获取卡号和密码的；</p>
+
+                            <p>实体卡和电子卡在我们这回收的时候都是一样的。</p></div>
+                    </div>
+                    <div class="faq-item"><h5 class="faq-tite"><a href="javascript:;"><strong>7、</strong>其他问题<i
+                            class="iconimg"></i></a></h5>
+
+                        <div class="faq-cont"><p>如若您有其他任何关于二手卡回收问题，您可以咨询在线客服QQ或者拨打卡卡礼品网客服电话：400-6093-365。</p></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="guide">
+            <div class="container"><a class="btn btn-white pull-right" href="http://www.lipin.com/signup.html">马上去注册</a>
+
+                <h3>您需要先注册登录51卡务网之后，才能在我们这边进行二手卡回收哦！！</h3></div>
+        </div>
+    </div>
+</div>
+<%- include ../../includes/footer.html %>
