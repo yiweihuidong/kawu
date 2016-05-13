@@ -19,7 +19,7 @@ module.exports = function(app) {
 	app.get(/user/,User.check)
 
 	//public
-	//app.get('/imgcode',Public.imgcode)
+	app.get('/imgcode',Public.imgcode)
 
 	//index
 	app.get('/',Index.index);
