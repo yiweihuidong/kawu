@@ -3,22 +3,23 @@ body, ul, li, dl, dd, dt, p, h1, h2, h3, h4, h5, h6 {
     padding: 0;
     list-style: none;
 }
-
-.header, .nav,.banner,.section, .footer ,.banner,.section .service>img,.section .user >img,.footer-box .re-code
+/*�޸��ܿ��*/
+.header, .nav,.banner,.section, .footer ,.banner,.section .service>img,.section .userEval,.footer-box .re-code
   {
-    min-width:980px;
+    min-width:1920px;
   }
+/*�޸�����������*/
+.header-box,.nav-box,.banner-box,.section .container,.footer-box .re-code{
+    width:1180px;
+    margin: 0 auto;
+}
 .banner>.banner-box{
     width:100%;
     margin:0 auto;
     text-align: center;
 }
-.banner>.banner-box>img,.section .service>img,.section .user >img{
+.banner>.banner-box>img,.section .service>img,.section .userEval >img{
     width:100%;
-}
-.header-box,.nav-box,.banner-box{
-    width:80%;
-    margin: 0 auto;
 }
 a {
     text-decoration: none;
@@ -34,13 +35,9 @@ body, a {
     font: 14px/1.42857143 "Microsoft YaHei", Arial, Tahoma, "Hiragino Sans GB", simsun;
 }
 .section .container{
-    width:80%;
-    margin:0 auto;
     text-align: center;
 }
 .footer-box .re-code{
-    width:80%;
-    margin:0 auto;
     text-align: center;
 }
 
