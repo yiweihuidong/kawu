@@ -11,7 +11,7 @@
 						</small>
 						注册
 					</h2>
-					<form action="/signup" method="post" id="userbutton" class="signupform">
+					<form id="userbutton" class="signupform">
 						<div class="form-group">
 							<label class="control-label" for="username">用户帐号</label>
 							<input type="text" class="form-control" id="username" name="username" datatype="e|m" sucmsg="用户名验证通过！" nullmsg="请输入用户名！" errormsg="请用邮箱或手机号码注册！"  />
@@ -37,7 +37,7 @@
 								<input type="checkbox" id="user-referee">使用推广号</label> -->
 						</div>
 						<div class="form-group">
-							<input class="btn btn-primary btn-block" type="submit" id="signup-submit" value="立即注册">
+							<input class="btn btn-primary btn-block" type="submit"  id="signup-submit" value="立即注册">
 							<!-- <input type="hidden" name="refer" value="signin.html?url=%2Faccount.html"> -->
 							<!-- <input type="hidden" name="formhash" value="3f959c23"> -->
 						</div>
@@ -68,7 +68,25 @@
 					}
 				})
 			});
-			$(".signupform").Validform();
+			$(".signupform").Validform({
+				beforeSubmit:function() {
+					submit();
+					return false;
+				}});
 		})
 	</script>
+<script>
+	function submit(){
+        var data={
+          username:$("#username").val(),
+		  userpassword:$("#newpsw").val(),
+		  repassword:$("#verifypsw").val()
+		}
+		sajax("/signup","post",data,function(data){
+			if(data.code=="400"){
+				alert(JSON.stringify(data.msg));
+			}
+		});
+	}
+</script>
 <%- include ../includes/footer.html %>

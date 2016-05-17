@@ -11,7 +11,7 @@
 						</small>
 						登录51卡务网
 					</h2>
-					<form action="/signin" method="post" id="login-form" class="signinform">
+					<form id="login-form" class="signinform">
 						<div class="form-group">
 							<div class="mr">
 								<label class="control-label" for="username">
@@ -50,7 +50,29 @@
 	</div>
 	<script type="text/javascript">
 		$(function (){
-			$(".signinform").Validform();
+			$(".signinform").Validform({
+				beforeSubmit:function() {
+				submit();
+				return false;
+			}});
 		})
 	</script>
+<script>
+   function submit(){
+		 var data={
+            username:$("#username").val(),
+            password:$("#password").val()
+		 };
+		 sajax("/signin","post",data,function(data){
+			 if (data.code=="200"){
+				 $("#password").val("");
+				 window.location.href="/user/cardsRecovery.html";
+		 }
+			 if(data.code=="400"){
+				 alert(data.msg);
+			 }
+		 });
+	   return false;
+   };
+</script>
 <%- include ../includes/footer.html %>

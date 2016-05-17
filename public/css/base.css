@@ -1275,7 +1275,7 @@ hr{
 .masthead{
     height: 610px;
     width: 100%;
-    background: url(../img/masthead.jpg) center center repeat-x #11a1c8;
+    background: url(./img/masthead.jpg) center center repeat-x #11a1c8;
 }
 
 /* masthead-jumbotron */
@@ -1283,7 +1283,7 @@ hr{
     height: 330px; 
     text-align: center; 
     color: #fff; 
-    background: url(../img/jumbotron.png) center center no-repeat;
+    background: url('/img/jumbotron.png') center center no-repeat;
 }
     .masthead-jumbotron h2{ font-size: 72px; padding: 40px 0 10px 0; display: none;} 
     .masthead-jumbotron h3{ font-size: 38px; font-weight: 300;display: none;} 
@@ -2475,13 +2475,13 @@ hr{
 .view-framework{
     position: relative;
     width: auto;
-    padding: 60px 0 0 180px;
+    padding: 116px 0 0 180px;
     background-color: #293038;
 }
 	/* view-framework-sidebar */
 	.view-framework-sidebar{
 		position: fixed;
-		top: 60px;
+		top: 116px;
 		bottom: 0;
 		left: 0;
 		width: 180px;

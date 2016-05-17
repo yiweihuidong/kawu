@@ -5,7 +5,7 @@ var TEST_TABLE = 'tbl_member_info';
 var CARDS_TYPE = 'tbl_card_info'; 
 var mysqlmsg = {
 	user: 'root',  
-  	password: '12345678',  
+  	password: 'yiweihuidong',  
 }
 //md5
 var crypto = require('crypto');
@@ -22,6 +22,26 @@ exports.check = function(req, res, next) {
 	}else{
 		next();
 	}
+}
+exports.accountLog = function(req, res) {
+	var _user = req.session.user;
+	var client = mysql.createConnection(mysqlmsg); 
+	client.connect();
+	client.query("use " + TEST_DATABASE);
+	client.query("select * from tbl_withdraw_recd where member_code='"+_user.member_code+"'", function(err, results, fields) {
+	  if(err){
+	  	console.log(err)
+	  }
+	  if(results){
+	  	var recd = results;
+		res.render('admin/accountLog',{
+			title: '用户操作日志',
+			recd: recd
+		});
+	  	console.log(recd);
+	  }
+	});
+	client.end();
 }
 //index
 
@@ -274,8 +294,15 @@ exports.changepassword = function(req, res){
 }
 //change password
 exports.setOrderPassword = function(req, res) {
+	var _user = req.session.user;
+	if(_user.pay_password == ""){
+		var paypassword = 0;
+	}else{
+		var paypassword = 1;
+	}
 	res.render('admin/setOrderPassword',{
-		title: '设置支付密码'
+		title: '设置支付密码',
+		paypassword: paypassword
 	});
 }
 exports.changepaypassword = function(req, res){
@@ -289,11 +316,13 @@ exports.changepaypassword = function(req, res){
 	  	console.log(err)
 	  }
 	  if(results){
-		var md5 = crypto.createHash('md5');
-	  	var oldpassword = password.oldpassword;
-		md5.update(oldpassword);
-		var yanpassword = md5.digest('hex');
-	  	if(yanpassword == results[0].pay_password){
+	  	if(password.oldpassword != "" && password.oldpassword != undefined){
+	  		var md5 = crypto.createHash('md5');
+		  	var oldpassword = password.oldpassword;
+			md5.update(oldpassword);
+			var yanpassword = md5.digest('hex');
+	  	}
+	  	if(results[0].pay_password == "" || yanpassword == results[0].pay_password){
 	  		//update password
 	  		var md5 = crypto.createHash('md5');
 	  		var newpassword = password.newpassword;
@@ -305,8 +334,6 @@ exports.changepaypassword = function(req, res){
 			  	console.log(err)
 			  }
 			  if(results){
-			  	console.log(yanpassword)
-				console.log(updatepassword)
 			  	res.json(common.resjson(200, "修改成功",{}))
 			  }
 			  if(fields){
@@ -330,9 +357,22 @@ exports.myOrder = function(req, res) {
 	});
 }
 exports.sellDetail = function(req, res) {
-	res.render('admin/sellDetail',{
-		title: '卖卡记录'
+	var _user = req.session.user;
+	var client = mysql.createConnection(mysqlmsg); 
+	client.connect();
+	client.query("use " + TEST_DATABASE);
+	client.query("select * from tbl_order_detail where member_code='"+_user.member_code+"'", function(err, results, fields) {
+	  if(err){
+	  	console.log(err)
+	  }
+	  if(results){
+		res.render('admin/sellDetail',{
+			title: '卖卡记录',
+			results: results
+		});
+	  }
 	});
+	client.end();
 }
 
 
@@ -340,7 +380,6 @@ exports.sellDetail = function(req, res) {
 exports.signin = function(req, res) {
 	var _user = req.body
 	// console.log(_user.username)
-
 	var content = _user.password;
 	var md5 = crypto.createHash('md5');
 	md5.update(content);
@@ -399,15 +438,18 @@ exports.checkUsername = function(req, res) {
 //signup
 exports.signup = function(req, res) {
 	var _user = req.body
-	console.log(_user)
+	// console.log(_user)
 
+	var imgcode = req.session.imgcode;
+	console.log(imgcode)
+	return;
 	var content = _user.userpassword;
 	var md5 = crypto.createHash('md5');
 	md5.update(content);
 	var password = md5.digest('hex'); 
 
 	var create_time=new Date().getTime();
-	console.log(create_time)
+	// console.log(create_time)
 	//创建连接  
 
 	var client = mysql.createConnection(mysqlmsg); 

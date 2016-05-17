@@ -1,240 +1,459 @@
 <%- include ../../userlayout.html %>
-	<div id="bank-dialog" class="modal fn-hide"></div>
-	<div class="view-framework">
-		<%- include ../../includes/userleft.html %>
-		<div class="view-framework-body">
-			<div class="container-fluid">
-				<div class="view-framework-main">
-					<div class="box">
-						<ul class="box-list clearfix">
-							<li class="pb25 fsz16">
-								您好，<%= user.member_code %>，欢迎登录51卡务网账户中心
-								<span class="sep">|</span>
-								<a class="gray" href="/out.html" tip="如您未在自己的电脑上登录51卡务网，请务必在&lt;br /&gt;离开的时候点击退出，以确保您的账户安全。">退出</a>
-							</li>
-							<li class="last">
-								<div class="account-assets clearfix">
-									<div class="col-xs-4">
-										<div class="assets-yue">
-											<div class="assets-icon">
-												<i class="iconfont icon-money"></i>
-											</div>
-											<div class="assets-title">账户余额（元）：</div>
-											<div class="assets-money"><%= user.balance %></div>
-										</div>
-									</div>
-									<div class="col-xs-3">
-										<div class="assets-actions pt15">
-											<p>
-												<a class="btn btn-primary btn-sm mr30" href="javascript:;" onclick="getcash()">提现</a>
-												<a href="">提现记录</a>
-											</p>
-											<!-- <p class="text-muted pt10">冻结余额：¥0.00</p> -->
-										</div>
-									</div>
-									<div class="col-xs-4">
-										<div class="assets-leight pt15">
-											<a class="btn btn-sm" href="">账户操作日志</a>
-										</div>
-									</div>
-								</div>
-							</li>
-						</ul>
-					</div>
-					<div class="box">
-						<ul class="box-list clearfix">
-							<li>
-								<div class="security-item clearfix">
-									<div class="col-xs-offset-1 col-xs-2">
-										<div class="item-name">安全等级</div>
-									</div>
-									<div class="col-xs-6">
-										<div class="item-progress">
-											<div class="progress">
-												<div class="progressbar securelevel-1"></div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</li>
-							<li>
-								<div class="security-item clearfix">
-									<div class="col-xs-1">
-										<div class="item-icon">
-											<i class="iconfont icon-open"></i>
-										</div>
-									</div>
-									<div class="col-xs-2">
-										<div class="item-name">登录密码</div>
-									</div>
-									<div class="col-xs-6">
-										<div class="item-text">
-											<span class="text-red">互联网账号存在被盗风险，建议您定期更改密码以保护账户安全。</span>
-										</div>
-									</div>
-									<div class="col-xs-2">
-										<div class="item-action">
-											<a href="/setpassword.html">修改登录密码</a>
-										</div>
-									</div>
-								</div>
-							</li>
-							<li>
-								<div class="security-item clearfix">
-									<% if(usermsg.cell_phone == ""){ %>
-									<div class="col-xs-1">
-										<div class="item-icon">
-											<i class="iconfont icon-close"></i>
-										</div>
-									</div>
-									<div class="col-xs-2">
-										<div class="item-name">绑定手机</div>
-									</div>
-									<div class="col-xs-6">
-										<div class="item-text">您还未绑定手机，请立即绑定</div>
-									</div>
-									<div class="col-xs-2">
-										<div class="item-action">
-											<a href="/setphone.html">绑定</a>
-										</div>
-									</div>
-						            <% }else{ %>
-						            <div class="col-xs-1">
-										<div class="item-icon">
-											<i class="iconfont icon-open"></i>
-										</div>
-									</div>
-									<div class="col-xs-2">
-										<div class="item-name">绑定手机</div>
-									</div>
-									<div class="col-xs-6">
-										<div class="item-text"><%= usermsg.cell_phone %></div>
-									</div>
-						            <% } %>
-								</div>
-							</li>
-							<li>
-								<div class="security-item clearfix">
-									<% if(usermsg.email != ""){ %>
-									<div class="col-xs-1">
-										<div class="item-icon">
-											<i class="iconfont icon-open"></i>
-										</div>
-									</div>
-									<div class="col-xs-2">
-										<div class="item-name">设置邮箱</div>
-									</div>
-									<div class="col-xs-6">
-										<div class="item-text"><%= usermsg.email %></div>
-									</div>
-									<% }else{ %>
-									<div class="col-xs-1">
-										<div class="item-icon">
-											<i class="iconfont icon-close"></i>
-										</div>
-									</div>
-									<div class="col-xs-2">
-										<div class="item-name">设置邮箱</div>
-									</div>
-									<div class="col-xs-6">
-										<div class="item-text">您还未设置邮箱，请立即设置</div>
-									</div>
-									<div class="col-xs-2">
-										<div class="item-action">
-											<a href="setemail.html">设置</a>
-										</div>
-									</div>
-									<% } %>
-								</div>
-							</li>
-							<!-- <li>
-								<div class="security-item clearfix">
-								<% if(usermsg.cell_phone == ""){ %>
-									<div class="col-xs-1">
-										<div class="item-icon">
-											<i class="iconfont icon-close"></i>
-										</div>
-									</div>
-									<div class="col-xs-2">
-										<div class="item-name">支付密码</div>
-									</div>
-									<div class="col-xs-6">
-										<div class="item-text">
-											<span class="text-red">在使用账户余额等时，均需通过支付密码进行身份验证，请牢记支付密码</span>
-										</div>
-									</div>
-									<div class="col-xs-2">
-										<div class="item-action">
-											<a href="#">支付密码管理</a>
-										</div>
-									</div>
-								</div>
-								<% }else{ %>
-									<div class="col-xs-1">
-										<div class="item-icon">
-											<i class="iconfont icon-open"></i>
-										</div>
-									</div>
-									<div class="col-xs-2">
-										<div class="item-name">支付密码</div>
-									</div>
-									<div class="col-xs-6">
-										<div class="item-text">
-											<span class="text-red"><%= usermsg.pay_password %></span>
-										</div>
-									</div>
-									<div class="col-xs-2">
-										<div class="item-action">
-											<a href="#">支付密码管理</a>
-										</div>
-									</div>
-								<% } %>
-							</li> -->
-							<li class="last">
-								<div class="security-item clearfix">
-									<div class="col-xs-offset-1 col-xs-2">
-										<div class="item-name">注册时间</div>
-									</div>
-									<div class="col-xs-6">
-										<div class="item-text"><%= moment(usermsg.create_time).format('YYYY年MM月DD日') %></div>
-									</div>
-								</div>
-							</li>
-						</ul>
-					</div>
-					<div class="account-safe-panel hide">
-						<div class="panel panel-tips panel-safe-tips">
-							<h5>账户安全提示：</h5>
-							<p class="red">您暂未绑定邮箱或手机号，这将导致无法修改支付密码和找回登录密码，为了您的账户安全，请尽快去设置！（建议两者都设置）</p>
-							<p class="orange">在提现、使用账户余额、51卡务网E卡余额等时，均需验证支付密码。</p>
-							<p>
-								<a class="btn btn-primary btn-small" href="account/act_email">设置邮箱</a>
-								<a class="btn btn-primary btn-small" href="">绑定手机</a>
-							</p>
-						</div>
-					</div>
-				</div>
-				<%- include ../../includes/userfooter.html %>
-			</div>
-		</div>
-	</div>
-	<div class="backtop" id="back-to-top">
-		<ul class="backtop-group">
-			<li>
-				<a class="iconimg wap" data-hover="dropdown" href="javascript:;">加关注</a>
-				<div class="dropdown-menu">
-					<img src="../img/wx.png" alt=""></div>
-			</li>
-			<li>
-				<a class="iconimg qq" target="_blank" href="">QQ在线咨询</a>
-			</li>
-			<li>
-				<a class="iconimg online" href="javascript:NTKF.im_openInPageChat(&#39;kf_9665_1445856633743&#39;)">在线客服</a>
-			</li>
-			<li>
-				<a class="iconimg totop" id="totop" href="account.html#top" style="display: none;">回到顶部</a>
-			</li>
-		</ul>
-	</div>
-	<div id="modal-dialog" class="modal hide"></div>
-	<div class="modal-cover hide" id="modal-dialog-cover"></div>
+<style>
+    .modal {
+        position: absolute;
+        top: 86px;
+        left: 50%;
+        margin-left: -300px;
+        width: 600px;
+        z-index: 1000;
+        background-color: #fff;
+    }
+    .table{
+        position: absolute;
+        top: 86px;
+        left: 50%;
+        width: 600px;
+        z-index: 1200;
+        background-color: #fff;
+    }
+</style>
+<div class="view-framework">
+    <%- include ../../includes/userleft.html %>
+    <div class="view-framework-body">
+        <div class="container-fluid">
+            <div class="view-framework-main">
+                <div class="box">
+                    <ul class="box-list clearfix">
+                        <li class="pb25 fsz16">
+                            您好，<%= user.member_code %>，欢迎登录51卡务网账户中心
+                            <span class="sep">|</span>
+                            <a class="gray" href="/out.html"
+                               tip="如您未在自己的电脑上登录51卡务网，请务必在&lt;br /&gt;离开的时候点击退出，以确保您的账户安全。">退出</a>
+                        </li>
+                        <li class="last">
+                            <div class="account-assets clearfix">
+                                <div class="col-xs-4">
+                                    <div class="assets-yue">
+                                        <div class="assets-icon">
+                                            <i class="iconfont icon-money"></i>
+                                        </div>
+                                        <div class="assets-title">账户余额（元）：</div>
+                                        <div class="assets-money"><%= user.balance %></div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-3">
+                                    <div class="assets-actions pt15">
+                                        <p>
+                                            <a id="getCash" class="btn btn-primary btn-sm mr30">提现</a>
+                                            <a href="">提现记录</a>
+                                        </p>
+                                        <!-- <p class="text-muted pt10">冻结余额：¥0.00</p> -->
+                                    </div>
+                                </div>
+                                <div class="col-xs-4">
+                                    <div class="assets-leight pt15">
+                                        <a id="operator-log" class="btn btn-sm" href="accountLog.html">账户操作日志</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="box">
+                    <ul class="box-list clearfix">
+                        <li>
+                            <div class="security-item clearfix">
+                                <div class="col-xs-offset-1 col-xs-2">
+                                    <div class="item-name">安全等级</div>
+                                </div>
+                                <div class="col-xs-6">
+                                    <div class="item-progress">
+                                        <div class="progress">
+                                            <div class="progressbar securelevel-1"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="security-item clearfix">
+                                <div class="col-xs-1">
+                                    <div class="item-icon">
+                                        <i class="iconfont icon-open"></i>
+                                    </div>
+                                </div>
+                                <div class="col-xs-2">
+                                    <div class="item-name">登录密码</div>
+                                </div>
+                                <div class="col-xs-6">
+                                    <div class="item-text">
+                                        <span class="text-red">互联网账号存在被盗风险，建议您定期更改密码以保护账户安全。</span>
+                                    </div>
+                                </div>
+                                <div class="col-xs-2">
+                                    <div class="item-action">
+                                        <a href="/setpassword.html">修改登录密码</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="security-item clearfix">
+                                <% if(usermsg.cell_phone == ""){ %>
+                                <div class="col-xs-1">
+                                    <div class="item-icon">
+                                        <i class="iconfont icon-close"></i>
+                                    </div>
+                                </div>
+                                <div class="col-xs-2">
+                                    <div class="item-name">绑定手机</div>
+                                </div>
+                                <div class="col-xs-6">
+                                    <div class="item-text">您还未绑定手机，请立即绑定</div>
+                                </div>
+                                <div class="col-xs-2">
+                                    <div class="item-action">
+                                        <a href="/setphone.html">绑定</a>
+                                    </div>
+                                </div>
+                                <% }else{ %>
+                                <div class="col-xs-1">
+                                    <div class="item-icon">
+                                        <i class="iconfont icon-open"></i>
+                                    </div>
+                                </div>
+                                <div class="col-xs-2">
+                                    <div class="item-name">绑定手机</div>
+                                </div>
+                                <div class="col-xs-6">
+                                    <div class="item-text"><%= usermsg.cell_phone %></div>
+                                </div>
+                                <% } %>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="security-item clearfix">
+                                <% if(usermsg.email != ""){ %>
+                                <div class="col-xs-1">
+                                    <div class="item-icon">
+                                        <i class="iconfont icon-open"></i>
+                                    </div>
+                                </div>
+                                <div class="col-xs-2">
+                                    <div class="item-name">设置邮箱</div>
+                                </div>
+                                <div class="col-xs-6">
+                                    <div class="item-text"><%= usermsg.email %></div>
+                                </div>
+                                <% }else{ %>
+                                <div class="col-xs-1">
+                                    <div class="item-icon">
+                                        <i class="iconfont icon-close"></i>
+                                    </div>
+                                </div>
+                                <div class="col-xs-2">
+                                    <div class="item-name">设置邮箱</div>
+                                </div>
+                                <div class="col-xs-6">
+                                    <div class="item-text">您还未设置邮箱，请立即设置</div>
+                                </div>
+                                <div class="col-xs-2">
+                                    <div class="item-action">
+                                        <a href="setemail.html">设置</a>
+                                    </div>
+                                </div>
+                                <% } %>
+                            </div>
+                        </li>
+                        <!-- <li>
+                            <div class="security-item clearfix">
+                            <% if(usermsg.cell_phone == ""){ %>
+                                <div class="col-xs-1">
+                                    <div class="item-icon">
+                                        <i class="iconfont icon-close"></i>
+                                    </div>
+                                </div>
+                                <div class="col-xs-2">
+                                    <div class="item-name">支付密码</div>
+                                </div>
+                                <div class="col-xs-6">
+                                    <div class="item-text">
+                                        <span class="text-red">在使用账户余额等时，均需通过支付密码进行身份验证，请牢记支付密码</span>
+                                    </div>
+                                </div>
+                                <div class="col-xs-2">
+                                    <div class="item-action">
+                                        <a href="#">支付密码管理</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <% }else{ %>
+                                <div class="col-xs-1">
+                                    <div class="item-icon">
+                                        <i class="iconfont icon-open"></i>
+                                    </div>
+                                </div>
+                                <div class="col-xs-2">
+                                    <div class="item-name">支付密码</div>
+                                </div>
+                                <div class="col-xs-6">
+                                    <div class="item-text">
+                                        <span class="text-red"><%= usermsg.pay_password %></span>
+                                    </div>
+                                </div>
+                                <div class="col-xs-2">
+                                    <div class="item-action">
+                                        <a href="#">支付密码管理</a>
+                                    </div>
+                                </div>
+                            <% } %>
+                        </li> -->
+                        <li class="last">
+                            <div class="security-item clearfix">
+                                <div class="col-xs-offset-1 col-xs-2">
+                                    <div class="item-name">注册时间</div>
+                                </div>
+                                <div class="col-xs-6">
+                                    <div class="item-text"><%= moment(usermsg.create_time).format('YYYY年MM月DD日') %>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="account-safe-panel hide">
+                    <div class="panel panel-tips panel-safe-tips">
+                        <h5>账户安全提示：</h5>
+
+                        <p class="red">您暂未绑定邮箱或手机号，这将导致无法修改支付密码和找回登录密码，为了您的账户安全，请尽快去设置！（建议两者都设置）</p>
+
+                        <p class="orange">在提现、使用账户余额、51卡务网E卡余额等时，均需验证支付密码。</p>
+
+                        <p>
+                            <a class="btn btn-primary btn-small" href="account/act_email">设置邮箱</a>
+                            <a class="btn btn-primary btn-small" href="">绑定手机</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <%- include ../../includes/userfooter.html %>
+        </div>
+    </div>
+</div>
+<%- include ../../includes/float.html %>
+<div id="modal-d" class="modal hide">
+    <div class="modal-header">
+        <h3>请填写银行卡信息</h3>
+        <a class="modal-close close">
+            <i class="iconfont">x</i>
+        </a>
+    </div>
+    <div class="modal-body">
+        <div class="modal-cash clearfix">
+            <form action="post">
+                <div class="col-xs-12">
+                    <div class="px25 border-right modal-cashuserinfo" id="cash1">
+                        <h5 class="clearfix">
+                            <a class="btn btn-xs pull-right" href="###" name="cash1"
+                               onclick="cashsubmit(this,2)">保存收款信息</a>收款信息</h5>
+                        <!-- 收款姓名-->
+                        <div class="form-group">
+                            <div class="col-xs-2">
+                                <label class="control-label">收款姓名：</label>
+                            </div>
+                            <div class="col-xs-4">
+                                <div class="mr4">
+                                    <input id="name" class="form-control" name="name" type="text" value=""
+                                           null="必须填写真实收款人">
+                                </div>
+                            </div>
+                            <div class="col-xs-6"><p class="pl10 pt10 text-muted">请正确填写，使用后不可更换！</p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-2"><label class="control-label">收款方式：</label></div>
+                            <div class="col-xs-6">
+                                <ul class="btn-group" id="banktype-group">
+                                    <li onclick="setbanktype(this,1,'')" class="selected">
+                                        <a class="btn" href="javascript:;">银行卡<b></b></a>
+                                    </li>
+                                    <li onclick="setbanktype(this,2,'')">
+                                        <a class="btn" href="javascript:;">支付宝<b></b></a>
+                                    </li>
+                                </ul>
+                                <!--<input type="hidden" name="banktype" value="1">-->
+                            </div>
+                        </div>
+                        <!-- 银行卡-->
+                        <!-- 所属银行-->
+                        <div class="form-group " id="tobanka">
+                            <div class="col-xs-2">
+                                <label class="control-label">所属银行：</label>
+                            </div>
+                            <div class="col-xs-6">
+                                <input id="bank" class="form-control" type="text" name="bank" value="">
+                            </div>
+                            <div class="col-xs-4">
+                                <p class="pl10 pt10 text-muted">请填写<span id="banktypename">所属银行</span>
+                                </p>
+                            </div>
+                        </div>
+                        <!-- 收款账号-->
+                        <div class="form-group">
+                            <div class="col-xs-2">
+                                <label class="control-label">收款账号：</label>
+                            </div>
+                            <div class="col-xs-6">
+                                <div class="mr4">
+                                    <input id="account" class="form-control" name="account" type="text" value=""
+                                           reg="^[0-9]{5,20}$" null="收款帐号不可为空" autocomplete="off">
+                                </div>
+                            </div>
+                            <div class="col-xs-4">
+                                <p class="pl10 pt10 text-muted">请填写<span id="banktypename">银行卡</span>账号
+                                </p>
+                            </div>
+                        </div>
+                        <!-- 支付密码-->
+                        <div class="form-group">
+                            <div class="col-xs-2"><label class="control-label">支付密码：</label></div>
+                            <div class="col-xs-6">
+                                <div class="mr4">
+                                    <input id="paypwd" class="form-control" name="paypass" type="password" value=""
+                                           null="请设置支付密码" reg="^[A-Za-z0-9]{6,20}$" autocomplete="off">
+                                </div>
+                            </div>
+                            <div class="col-xs-4"><p class="pl10 pt10 text-muted"><span class="red">请设置支付密码</span></p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-8 col-xs-offset-3">
+                                <a class="btn btn-primary" name="cash1" onclick="submit()">确定提现</a>
+                                <a class="btn close" href="javascript:;">取消</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--<div class="col-xs-5">-->
+                <!--<div class="px25 modal-cash-moneyinfo" id="cash2">-->
+                <!--<h5>请填写金额</h5>-->
+                <!--<div class="form-group">-->
+                <!--<div class="col-xs-3">-->
+                <!--<label class="control-label" for="moneyoff">账户余额：</label>-->
+                <!--</div>-->
+                <!--<div class="col-xs-3">-->
+                <!--<div class="mr4">-->
+                <!--<input class="form-control" name="moneyoff" id="moneyoff" type="text" value="0.00" num="0|0">-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--<div class="col-xs-5">-->
+                <!--<p class="pl10 pt10 text-muted">可提现：<em id="money1">0</em>元</p>-->
+                <!--</div>-->
+                <!--<div class="col-xs-9 col-xs-offset-3">-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--<div class="form-group hide">-->
+                <!--<div class="col-xs-3">-->
+                <!--<label class="control-label" for="epointoff">E卡余额：</label>-->
+                <!--</div>-->
+                <!--<div class="col-xs-3">-->
+                <!--<div class="mr4">-->
+                <!--<input class="form-control" name="epointoff" id="epointoff" type="text" value="0.00" num="0|0.00"></div></div><div class="col-xs-5"><p class="pl10 pt10 text-muted">可提现：0.00元</p>-->
+                <!--</div>-->
+                <!--<div class="col-xs-9 col-xs-offset-3"><p class="help-block clearfix">手续费：<span id="poundage">0.00</span>元</p>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--<div class="form-group pb10">-->
+                <!--<div class="col-xs-3">-->
+                <!--<label class="control-label">实际可得：</label>-->
+                <!--</div>-->
+                <!--<div class="col-xs-5">-->
+                <!--<div class="control-label">-->
+                <!--<strong class="fsz18 text-red">-->
+                <!--<span id="totalcash">0.00</span>元</strong>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--<div class="form-group">-->
+                <!--<div class="col-xs-8 col-xs-offset-3">-->
+                <!--<a class="btn btn-primary" name="cash1" onclick="submit()">确定提现</a>-->
+                <!--<a  class="btn close" href="javascript:;">取消</a>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--<input type="hidden" name="formhash" value="3f959c23"></div>-->
+            </form>
+        </div>
+    </div>
+</div>
+<div id="modal-dialog-c" class="modal-cover hide"></div>
+<script>
+    $(function () {
+        //取消对话框
+        $("#getCash").click(function () {
+            $("#modal-d").show();
+            $("#modal-dialog-c").show();
+        });
+        $(".close").click(function () {
+            $("#modal-d").hide();
+            $("#modal-dialog-c").hide();
+        });
+    });
+    //用户id
+    var usr =<%-JSON.stringify(eval(user)) %>;
+    //选择支付方式
+    var withdrawName;
+    $("#banktype-group>li").click(function () {
+        if ($(this).text() == "银行卡") {
+
+            withdrawName = $(this).text().trim();
+
+        } else {
+            withdrawName = $(this).text().trim();
+        }
+    });
+    function submit() {
+        var data = {};
+        if (withdrawName == "银行卡") {
+            data = {
+                memberId: usr.id,
+                memberName: $("#name").val(),
+                payType: 1,
+                withdrawName: $("#bank").val(),
+                withdrawAccount: $("#account").val(),
+                applyPayPass: $("#paypwd").val()
+            }
+
+        } else if (withdrawName == "支付宝") {
+            data = {
+                memberId: usr.id,
+                memberName: $("#name").val(),
+                payType: 2,
+                withdrawName: withdrawName,
+                withdrawAccount: $("#account").val(),
+                applyPayPass: $("#paypwd").val()
+            }
+        } else
+            {
+                data = {
+                    memberId: usr.id,
+                    memberName: $("#name").val(),
+                    payType: 1,
+                    withdrawName: $("#bank").val(),
+                    withdrawAccount: $("#account").val(),
+                    applyPayPass: $("#paypwd").val()
+                }
+
+        }
+    console.log(data);
+    sajax('/dd', 'post', data, function () {
+        alert('test');
+    });
+    }
+</script>
+<script>
+    $("#operator-log").click(function(){
+
+    });
+</script>

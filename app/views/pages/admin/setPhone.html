@@ -1,4 +1,6 @@
 <%- include ../../userlayout.html %>
+<link rel="stylesheet" type="text/css" href="/css/validform.css">
+<script type="text/javascript" src="/js/Validform_v5.3.2_min.js"></script>
 	<div id="bank-dialog" class="modal fn-hide"></div>
 		<div class="view-framework">
 		<%- include ../../includes/userleft.html %>
@@ -37,7 +39,7 @@
 								</div>
 								<div class="col-xs-3">
 									<div class="mr4">
-										<input class="form-control" id="phoneno" type="text" name="phoneno"></div>
+										<input class="form-control" id="phoneno" type="text" name="phoneno"placeholder="邮箱/手机号码" datatype="m" sucmsg="手机号验证通过！" nullmsg="请输入手机号！" errormsg="请输入正确的手机号码！"></div>
 								</div>
 							</div>
 							<div class="form-group">
@@ -50,15 +52,14 @@
 								</div>
 								<div class="col-xs-6">
 									<div class="pl10">
-										<a class="btn" href="javascript:;" onclick="getcode(this,&#39;get&#39;,&#39;mobile&#39;);" id="mcode">获取验证码</a>
+										<!-- <a class="btn" href="javascript:;" id="mcode">获取验证码</a> -->
+										<input class="btn" type="button" id="mcode" value="免费获取验证码" /> 
 									</div>
 								</div>
 							</div>
 							<div class="form-group pb30">
 								<div class="col-xs-3 col-xs-offset-3">
-									<input type="hidden" name="refer" value="/account/act_mobile">
-									<input type="hidden" name="formhash" value="3f959c23">
-									<a class="btn btn-primary btn-block" onclick="getcode(this,&#39;set&#39;,&#39;mobile&#39;);">提交</a>
+									<input class="btn btn-primary btn-block" id="submit" type="submit" value="提交" />
 								</div>
 							</div>
 						</form>
@@ -80,7 +81,7 @@
 							<strong>· 无法通过验证？</strong>
 						</h5>
 						<p>
-							如果您的手机和邮箱已经无法正常使用，请发送账号名（手机/邮箱/用户名）、联系手机至service@lipin.com，客服将在收到邮件后两小时内联系您。（客服工作时间为09:00-18:00）
+							如果您的手机和邮箱已经无法正常使用，请发送账号名（手机/邮箱/用户名）、联系手机至xxx@xx.com，客服将在收到邮件后两小时内联系您。（客服工作时间为09:00-18:00）
 						</p>
 					</div>
 				</div>
@@ -88,25 +89,73 @@
 			</div>
 		</div>
 	</div>
-	<div class="backtop" id="back-to-top">
-		<ul class="backtop-group">
-			<li>
-				<a class="iconimg wap" data-hover="dropdown" href="javascript:;">加关注</a>
-				<div class="dropdown-menu">
-					<img src="../img/wx.png" alt=""></div>
-			</li>
-			<li>
-				<a class="iconimg qq" target="_blank" href="">QQ在线咨询</a>
-			</li>
-			<li>
-				<a class="iconimg online" href="javascript:NTKF.im_openInPageChat(&#39;kf_9665_1445856633743&#39;)">在线客服</a>
-			</li>
-			<li>
-				<a class="iconimg totop" id="totop" href="#top" style="display: none;">回到顶部</a>
-			</li>
-		</ul>
-	</div>
-	<div id="modal-dialog" class="modal hide"></div>
-	<div class="modal-cover hide" id="modal-dialog-cover"></div>
+	<%- include ../../includes/float.html %>
 </body>
+<script type="text/javascript">
+	var wait=60;
+	$(function (){
+		$("#submitmobile").Validform({
+			beforeSubmit:function() {
+				changephone ();
+				return false
+			}}
+		);
+		$("#mcode").click(function (){
+			settime(this);
+			// if(phoneno == ""){
+			// 	alert('请输入电话号码');
+			// 	return false;
+			// }
+			var data = {
+				phone : phoneno
+			}
+			sajax('/actions/Member.action?applyMessageCode','POST',data,function (data){
+				if(data.code == 200){
+					alert(data.msg);
+				}else{
+					alert(data.msg)
+				}
+			})
+		})
+		function changephone (){
+			var phoneno = $("#phoneno").val();
+			var codeno = $("#codeno").val();
+			// if(phoneno == ""){
+			// 	alert('电话号码不能为空');
+			// 	return false;
+			// }
+			if(codeno == ""){
+				alert('验证码不能为空');
+				return false;
+			}
+			var data = {
+				phone: phoneno,
+				code: codeno
+			}
+			sajax('/actions/Member.action?memberBindPhone','POST',data,function (data){
+				if(data.code == 200){
+					alert(data.msg);
+					window.location.reload();
+				}else{
+					alert(data.msg)
+				}
+			})
+		}
+		var countdown=59; 
+		function settime(val) { 
+			if (countdown == 0) { 
+				val.removeAttribute("disabled");    
+				val.value="免费获取验证码"; 
+				countdown = 60; 
+			} else { 
+				val.setAttribute("disabled", true); 
+				val.value="重新发送(" + countdown + ")"; 
+				countdown--; 
+				setTimeout(function() { 
+					settime(val) 
+				},1000) 
+			}
+		}
+	})
+</script>
 </html>

@@ -1,56 +1,10 @@
 <%- include ../../includes/head.html %>
 <%- include ../../includes/header.html %>
-<body>
-<div class="tip" id="eytip" style="display: none; left: 1172.5px; top: 72px;"><i id="tip-arrow"
-                                                                                 class="tip-arrow tip-arrow-top"></i>
-
-    <div class="tip-cont" id="tip-cont">分享到豆瓣网</div>
-</div>
 <div class="content">
-    <!--<div class="subnav">-->
-    <!--<div class="container">-->
-    <!--<ul class="subnav-tabs clearfix">-->
-    <!--<li><a href="http://www.lipin.com/list-desciption.html">卡券介绍说明</a></li>-->
-    <!--<li><a href="http://www.lipin.com/list-getting.html">卡券获取(购买)</a></li>-->
-    <!--<li><a href="http://www.lipin.com/list-binding.html">卡券绑定(使用) </a></li>-->
-    <!--<li><a href="http://www.lipin.com/list-amount.html">卡券查询余额</a></li>-->
-    <!--<li class="active"><a href="http://www.lipin.com/list-recovery.html">卡券回收</a></li>-->
-    <!--<li><a href="http://www.lipin.com/list-article.html">业内新闻</a></li>-->
-    <!--</ul>-->
-    <!--</div>-->
-    <!--</div>-->
-    <div class="max-breadcrumbs clearfix">
-        <div class="container">
-            <div class="bdsharebuttonbox pr0 pull-right bdshare-button-style0-24" data-bd-bind="1462850095737"><a
-                    href="http://www.lipin.com/jingdongeka.html#" class="bds_sqq" data-cmd="sqq" tip="分享到QQ好友"
-                    title="分享到QQ好友"></a><a href="http://www.lipin.com/jingdongeka.html#" class="bds_qzone"
-                                           data-cmd="qzone" tip="分享到QQ空间" title="分享到QQ空间"></a><a
-                    href="http://www.lipin.com/jingdongeka.html#" class="bds_weixin" data-cmd="weixin" tip="分享到微信"
-                    title="分享到微信"></a><a href="http://www.lipin.com/jingdongeka.html#" class="bds_tsina"
-                                         data-cmd="tsina" tip="分享到新浪微博" title="分享到新浪微博"></a><a
-                    href="http://www.lipin.com/jingdongeka.html#" class="bds_tqq" data-cmd="tqq" tip="分享到腾讯微博"
-                    title="分享到腾讯微博"></a><a href="http://www.lipin.com/jingdongeka.html#" class="bds_douban"
-                                           data-cmd="douban" tip="分享到豆瓣网" title="分享到豆瓣网"></a><a
-                    href="http://www.lipin.com/jingdongeka.html#" class="bds_copy" data-cmd="copy" tip="分享到复制网址"
-                    title="分享到复制网址"></a><a href="http://www.lipin.com/jingdongeka.html#" class="bds_more"
-                                           data-cmd="more"></a></div>
-            <script>window._bd_share_config = {
-                "common": {
-                    "bdSnsKey": {},
-                    "bdText": "",
-                    "bdMini": "2",
-                    "bdMiniList": false,
-                    "bdPic": "",
-                    "bdStyle": "0",
-                    "bdSize": "24"
-                }, "share": {}
-            };
-            with (document)0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];</script>
-            <div class="breadcrumbs"><a href="/index.html">首页</a>
-                   <em class="sep">/</em><span class="cardKind-title">京东E卡回收</span>
-            </div>
-        </div>
+    <div class="breadcrumbs"><a href="/index.html">首页</a>
+           <em class="sep">/</em><span class="cardKind-title">京东E卡回收</span>
     </div>
+</div>
     <div class="bggray py25" ng-app="M1" ng-controller="ctr">
         <div class="container">
             <div class="box article clearfix">
@@ -84,7 +38,7 @@
                             href="#">查询余额</a><span class="sep">|</span><a
                             href="#">获取(购买)</a><span class="sep">|</span><a
                             href="#">绑定(使用)</a></p>
-                        <h2 class="text-red cardKind-title">京东e卡回收</h2>
+                        <h2 class="text-red cardtype-title">京东e卡回收</h2>
                     </div>
 
                     <div class="recycle-loading" style="display: none;"><i class="iconimg icon-loading"></i>回收表单加载中，请稍候...
@@ -113,108 +67,9 @@
                                 </div>
                             </div>
                             <script>
-                                //卡类和卡种
-                                cards = <%- JSON.stringify(eval(cards)) %>;
-                                cardstypes = <%- JSON.stringify(eval(cardstypes)) %>;
-                                // console.log(cardstypes);
-                                cardsprice=<%- JSON.stringify(eval(cardsprice))%>;
-                                //console.log(cards);
-                                //卡种
-                                for(var i= 0,codes=[],names=[];i<cards.length;i++){
-                                    codes.push(cards[i].code);
-                                    names.push(cards[i].name);
-                                    var c=$('<h5 val='+i+' class="ifold-menu"><a class="cards"><i class="iconfont"></i>'+cards[i].name+'<s></s></a></h5>');
-                                    $("div.iunfold").append(c);
-                                }
-                                //卡类
-                                for(var i= 0,ids=[],cardNames=[],li=[];i<cardstypes.length;i++){
-                                    ids.push(cardstypes[i].id);
-                                    cardNames.push(cardstypes[i].card_name);
-                                    li.push($('<li val='+i+'><a class="cardType">'+cardstypes[i].card_name+'</a></li>'));
-                                }
-                                var div=$('<div class="ifold-body"></div>');
-                                var ul=$('<ul id="card_kind" class="article-submenu clearfix"></ul>');
-                                for(var i=0;i< li.length;i++){
-                                    var type=$(ul).append(li);}
-                                $("h5[val='0']").after(div.append(type));
-                                //价格
-                                for(var i= 0,values=[],prices=[];i<cardsprice.length;i++){
-                                    values.push(cardsprice[i].face_value);
-                                    prices.push(cardsprice[i].bid_price);
-                                    var li=$('<li><a class="btn" >￥'+cardsprice[i].face_value+'<small>/'+'￥'+cardsprice[i].bid_price+'</small><b></b></a></li>');
-                                    $("#card-facevalue").append(li);
-                                }
-                                $(".cards").click(function(e){
-                                    var i=$(e.target).parent("h5").attr("val");
-                                    console.log(i);
-                                    var data = {
-                                        cardstype:codes[i]
-                                    }
-                                    console.log(data.cardstype);
-                                    sajax("/cardstype", "post", data, function (data) {
-                                        cardstypes =eval(JSON.stringify(data.data.cardstypes));
-                                        //卡类
-                                        $(".ifold-body").remove();
-                                        for(var i= 0,ids=[],cardNames=[],li=[];i<cardstypes.length;i++){
-                                            ids.push(cardstypes[i].id);
-                                            cardNames.push(cardstypes[i].card_name);
-                                            li.push($('<li val='+i+'><a class="cardType">'+cardstypes[i].card_name+'</a></li>'));
-                                        }
-                                        var div=$('<div class="ifold-body"></div>');
-                                        var ul=$('<ul id="card_kind" class="article-submenu clearfix"></ul>');
-                                        for(var i=0;i< li.length;i++){
-                                            var type=$(ul).append(li);}
-                                        $("h5[val='0']").after(div.append(type));
-                                        cardsprice=eval(JSON.stringify(data.data.cardsprice));
-                                        console.log( cardsprice);
-                                        //价格
-                                        $("#card-facevalue>li").remove();
-                                        for(var i= 0,values=[],prices=[];i<cardsprice.length;i++){
-                                            values.push(cardsprice[i].face_value);
-                                            prices.push(cardsprice[i].bid_price);
-                                            var li=$('<li><a class="btn" >￥'+cardsprice[i].face_value+'<small>/'+'￥'+cardsprice[i].bid_price+'</small><b></b></a></li>');
-                                            $("#card-facevalue").append(li);
-                                        }
-                                    });
-                                });
-                                $(".cardType").click(function(e){
-                                    var i=$(e.target).parent("li").attr("val");
-                                    var data = {
-                                        cardsid: ids[i]
-                                    }
-                                    //console.log(data.cardsid);
-                                    sajax("/cardsid", "post", data, function (data) {
-                                        cardsprice=eval(JSON.stringify(data.data));
-                                        console.log(cardsprice);
-                                        //价格
-                                        $("#card-facevalue>li").remove();
-                                        for(var i= 0,values=[],prices=[];i<cardsprice.length;i++){
-                                            values.push(cardsprice[i].face_value);
-                                            prices.push(cardsprice[i].bid_price);
-                                            var li=$('<li><a class="btn" ><small>￥'+cardsprice[i].bid_price+'</small><b></b></a></li>');
-                                            $("#card-facevalue").append(li);
-                                        }
-                                    } );
-                                });
-                                function tijiao() {
-                                    var data = {
-                                        bid_price: 1,//回收价
-                                        card_id: 2,//卡类型id
-                                        card_name: 3,//卡片名称
-                                        card_no: 4,//卡片
-                                        card_password: 5,//卡密码
-                                        face_value: 6,//面值
-                                        id: 7,//id
-                                        order_code: 8//订单编号
-                                    }
-                                    sajax("/sellCardsPost", "post", data, function (data) {
-                                        alert(JSON.stringify(data));
-                                    });
-                                }
-                            </script>
-                            <script>
                                 //面包屑
                                 var url=window.location.href;
+                                if(url.indexOf("?")!=-1){
                                 var need=url.slice(url.indexOf("?")+1);
                                 var arr =need.split("&");
                                 var cardstype=arr[0].slice(arr[0].indexOf("=")+1);
@@ -237,7 +92,7 @@
                                         break;
                                     default:$(".card_kind>li:nth-child(1)").addClass("active");
                                     // $("cardKind-title").text("京东E卡回收");
-                                }
+                                }}
                                 $("#card_kind").click(function(e){
                                     $(e.target).parent("li").siblings().removeClass("active");
                                     $(e.target).parent("li") .addClass("active");
@@ -257,17 +112,15 @@
                                 </div>
                                 <div class="col-xs-11">
                                     <ul class="btn-group btn-group-card btn-group-units" id="card-species">
-                                        <li id="units1"
-                                            onclick="setTab(&#39;units&#39;,1,2);$(&#39;#type&#39;).val(0);"
+                                        <li id="units1" class="units" val="card1"
                                             class="active">
-                                            <a class="btn btn-outline" href="javascript:;">
+                                            <a class="btn btn-outline" >
                                                 <i class="iconfont icon-single"></i>
                                                 单张回收
                                                 <b></b>
                                             </a>
                                         </li>
-                                        <li id="units2"
-                                            onclick="setTab(&#39;units&#39;,2,2);$(&#39;#type&#39;).val(1);">
+                                        <li id="units2" class="units" val="card2">
                                             <a class="btn btn-outline" href="javascript:;">
                                                 <i class="iconfont icon-batch"></i>
                                                 批量回收
@@ -373,6 +226,126 @@
                             </div>
                         </div>
                     </div>
+                    <script>
+                        //卡类和卡种
+                        cards = <%- JSON.stringify(eval(cards)) %>;
+                        cardstypes = <%- JSON.stringify(eval(cardstypes)) %>;
+                        // console.log(cardstypes);
+                        cardsprice=<%- JSON.stringify(eval(cardsprice))%>;
+                        //console.log(cards);
+                        //卡种
+                        for(var i= 0,codes=[],names=[];i<cards.length;i++){
+                            codes.push(cards[i].code);
+                            names.push(cards[i].name);
+                            var c=$('<h5 val='+i+' class="ifold-menu"><a class="cards"><i class="iconfont"></i>'+cards[i].name+'<s></s></a></h5>');
+                            $("div.iunfold").append(c);
+                        }
+                        //卡类
+                        for(var i= 0,ids=[],cardNames=[],li=[];i<cardstypes.length;i++){
+                            ids.push(cardstypes[i].id);
+                            cardNames.push(cardstypes[i].card_name);
+                            li.push($('<li val='+i+'><a class="cardType">'+cardstypes[i].card_name+'</a></li>'));
+                        }
+                        var div=$('<div class="ifold-body"></div>');
+                        var ul=$('<ul id="card_kind" class="article-submenu clearfix"></ul>');
+                        for(var i=0;i< li.length;i++){
+                            var type=$(ul).append(li);}
+                        $("h5[val='0']").after(div.append(type));
+                        //价格
+                        for(var i= 0,values=[],prices=[];i<cardsprice.length;i++){
+                            values.push(cardsprice[i].face_value);
+                            prices.push(cardsprice[i].bid_price);
+                            var li=$('<li><a class="btn" >￥'+cardsprice[i].face_value+'<small>/'+'￥'+cardsprice[i].bid_price+'</small><b></b></a></li>');
+                            $("#card-facevalue").append(li);
+                        }
+                        $(".cards").click(function(e){
+                            var i=$(e.target).parent("h5").attr("val");
+                            console.log(i);
+                            var data = {
+                                cardstype:codes[i]
+                            }
+                            console.log(data.cardstype);
+                            sajax("/cardstype", "post", data, function (data) {
+                                cardstypes =eval(JSON.stringify(data.data.cardstypes));
+                                //卡类
+                                $(".ifold-body").remove();
+                                for(var i= 0,ids=[],cardNames=[],li=[];i<cardstypes.length;i++){
+                                    ids.push(cardstypes[i].id);
+                                    cardNames.push(cardstypes[i].card_name);
+                                    li.push($('<li val='+i+'><a class="cardType">'+cardstypes[i].card_name+'</a></li>'));
+                                }
+                                var div=$('<div class="ifold-body val="'+i+'></div>');
+                                var ul=$('<ul id="card_kind" class="article-submenu clearfix"></ul>');
+                                for(var i=0;i< li.length;i++){
+                                    var type=$(ul).append(li);}
+                                $("h5[val='0']").after(div.append(type));
+                                cardsprice=eval(JSON.stringify(data.data.cardsprice));
+                                console.log( cardsprice);
+                                //价格
+                                $("#card-facevalue>li").remove();
+                                for(var i= 0,values=[],prices=[];i<cardsprice.length;i++){
+                                    values.push(cardsprice[i].face_value);
+                                    prices.push(cardsprice[i].bid_price);
+                                    var li=$('<li><a class="btn" >￥'+cardsprice[i].face_value+'<small>/'+'￥'+cardsprice[i].bid_price+'</small><b></b></a></li>');
+                                    $("#card-facevalue").append(li);
+                                }
+                            });
+                        });
+                        $(".cardType").click(function(e){
+                            $(".cardtype-title").text($(e.target).text());
+                            var i=$(e.target).parent("li").attr("val");
+                            var data = {
+                                cardsid: ids[i]
+                            }
+                            //console.log(data.cardsid);
+                            sajax("/cardsid", "post", data, function (data) {
+                                cardsprice=eval(JSON.stringify(data.data));
+                                console.log(cardsprice);
+                                //价格
+                                $("#card-facevalue>li").remove();
+                                for(var i= 0,values=[],prices=[];i<cardsprice.length;i++){
+                                    values.push(cardsprice[i].face_value);
+                                    prices.push(cardsprice[i].bid_price);
+                                    var li=$('<li><a class="btn" ><small>￥'+cardsprice[i].bid_price+'</small><b></b></a></li>');
+                                    $("#card-facevalue").append(li);
+                                }
+                            } );
+                        });
+                         var card;
+                         $(".units").click(function(){
+                             card=$(this).attr("id");
+                        });
+                        function tijiao() {
+                            var data=[];
+                            if(card=="units1"){
+                         data = [{
+                                bid_price: 1,//回收价
+                                card_id: 2,//卡类型id
+                                card_name: 3,//卡片名称
+                                card_no: 4,//卡号
+                                card_password: 5,//卡密码
+                                face_value: 6,//面值
+                                id: 7,//id
+                                order_code: 8//订单编号
+                            }]}else{
+                                var cardList_val= $("#cardlist").val();
+                                var cardList_arr=cardList_val.split(" ");
+                                console.log(cardList_arr);
+                                for(var i=0;i<cardList_arr.length;i+=2){
+                                    data.push({card_no:cardList_arr[i]});
+                                }
+                                //console.log(data);
+                                for(var j=1;j<cardList_arr.length;j+=2){
+                                    data[(j-1)/2].card_password=cardList_arr[j];
+
+                                }
+                                console.log(data);
+ }
+                            sajax("/sellCardsPost", "post", data, function (data) {
+                                alert(JSON.stringify(data));
+                            });
+                        }
+                    </script>
 <!--<div>-->
                     <!--<div class="recovery-panel">-->
                         <!--<div class="recovery-intro clearfix"><img class="img" src="/img/cardsRecovery/2.jpg" alt="">-->

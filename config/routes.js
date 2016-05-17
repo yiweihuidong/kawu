@@ -40,6 +40,7 @@ module.exports = function(app) {
 	app.get('/user/myorder.html',User.myOrder)
 	app.get('/user/selldetail.html',User.sellDetail)
 	app.get('/user/cardsRecovery.html',User.cardsRecovery)
+	app.get('/user/accountLog.html',User.accountLog)
 	//usr sellcards
 	app.post('/cardstype',User.cards)
 	app.post('/cardsid',User.id)

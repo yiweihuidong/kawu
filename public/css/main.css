@@ -105,7 +105,7 @@ ul.h-right > li {
 .nav-box > ul > li > span.service {
     width: 20px;
     height: 35px;
-    background-position: -50px -9px;
+    background-position: -48px -9px;
     background-size:100px;
 }
 
@@ -164,6 +164,12 @@ ul.h-right > li {
 }
 .section .public-course li.course-pic >img{
     width: 96%;
+}
+/*一站式服务*/
+.section>.section-box>.service{
+    background-image:url('/img/1_04.jpg');
+    height:425px;
+    margin-left:-300px;
 }
 /*用户品评价部分*/
 .user-eval>.index-title

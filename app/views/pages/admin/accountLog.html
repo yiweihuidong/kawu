@@ -1,0 +1,62 @@
+<%- include ../../userlayout.html %>
+<style>
+    table{
+        width:100%;
+        margin:0 auto;
+    }
+    table>tbody>tr,table>thead>tr>th{
+        line-height:30px;
+        text-align:center;
+        vertical-align:middle;
+    }
+</style>
+<div class="view-framework">
+    <%- include ../../includes/userleft.html %>
+    <div class="view-framework-body">
+        <div class="container-fluid">
+            <div class="view-framework-main"><h3 class="clearfix">
+                <a class="btn btn-small pull-right"  href="/user/myAccount.html">返回我的账户</a>账户操作日志
+            </h3>
+            <% if(recd.length <= 0){ %>
+            <div class="box">
+                <div class="nodata">
+                    <i class="iconfont icon-nodata"></i>
+                    <br>
+                    抱歉，没有找到任何相关的数据！
+                </div>
+            </div>
+            <% }else{ %>
+            <table class="table trade-records">
+                <thead>
+                    <tr>
+                        <th class="types">类型</th>
+                        <th class="info">支付方式</th>
+                        <th class="amount">金额</th>
+                        <th class="time">创建时间</th>
+                        <th class="ips">处理时间</th>
+                        <th class="ips">状态</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <% for(var i=0;i<recd.length;i++){ %>
+                    <tr>
+                        <td class="types">提现</td>
+                        <td class="info"><%= recd[i].pay_type %></td>
+                        <td class="amount"><%= recd[i].amount %></td>
+                        <td class="time"><%= moment(recd[i].create_time).format('YYYY年MM月DD日') %></td>
+                        <td class="ips"><%= moment(recd[i].handle_time).format('YYYY年MM月DD日') %></td>
+                        <td class="ips"><%= recd[i].status %></td>
+                    </tr>
+                <% } %>
+                </tbody>
+                <% } %>
+            </table>
+            <!-- <div class="box"></div> -->
+            <%- include ../../includes/float.html %>
+            </div>
+            <%- include ../../includes/userfooter.html %>
+        </div>
+    </div>
+</div>
+</body>
+</html>

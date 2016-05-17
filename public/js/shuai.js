@@ -1,5 +1,5 @@
-//var host = "http://127.0.0.1:3000";
-var host="http://test.helpyouworkeasy.com:3000";
+var host = "http://127.0.0.1:3000";
+// var host="http://test.helpyouworkeasy.com:3000";
 function sajax(url,type,data,callback){
 	$.ajax({
         "url": host + url,
